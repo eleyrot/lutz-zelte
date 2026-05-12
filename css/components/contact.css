@@ -1,0 +1,127 @@
+/* ==========================================================================
+   contact.css — Lutz Zelte GmbH
+   Zweck: Kontaktbereich mit Formular und Direktkontakt-Info.
+   ========================================================================== */
+
+/* --------------------------------------------------------------------------
+   1. Kontakt-Layout — Mobile: gestapelt, Desktop: nebeneinander
+   -------------------------------------------------------------------------- */
+.contact {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-8);
+}
+
+/* --------------------------------------------------------------------------
+   2. Formular
+   -------------------------------------------------------------------------- */
+.contact__form {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+}
+
+.form__group {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-1);
+}
+
+.form__label {
+  font-size: var(--text-sm);
+  font-weight: 600;
+  color: var(--color-dark);
+  letter-spacing: 0.03em;
+}
+
+.form__input {
+  width: 100%;
+  padding: var(--space-1) var(--space-2);
+  font-family: var(--font-body);
+  font-size: var(--text-base);
+  color: var(--color-dark);
+  background-color: var(--color-white);
+  border: 1.5px solid var(--color-gray-light);
+  border-radius: var(--radius-sm);
+  transition: border-color var(--transition), box-shadow var(--transition);
+  outline: none;
+}
+
+.form__input:focus {
+  border-color: var(--color-primary);
+  box-shadow: 0 0 0 3px rgba(245, 200, 0, 0.2);
+}
+
+.form__input::placeholder {
+  color: var(--color-gray-light);
+}
+
+.form__input--textarea {
+  resize: vertical;
+  min-height: 140px;
+}
+
+/* Fehler-Zustand */
+.form__input.is-invalid {
+  border-color: #d9534f;
+}
+
+.form__error {
+  font-size: var(--text-xs);
+  color: #d9534f;
+  margin-top: 2px;
+}
+
+/* --------------------------------------------------------------------------
+   3. Direktkontakt Info
+   -------------------------------------------------------------------------- */
+.contact__info {
+  font-style: normal;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+
+.contact__info-title {
+  font-family: var(--font-heading);
+  font-size: var(--text-xl);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--color-dark);
+  padding-bottom: var(--space-2);
+  border-bottom: 3px solid var(--color-primary);
+  margin-bottom: var(--space-1);
+}
+
+.contact__info a {
+  color: var(--color-dark);
+  font-weight: 500;
+  transition: color var(--transition);
+}
+
+.contact__info a:hover {
+  color: var(--color-primary-dark);
+}
+
+.contact__availability {
+  font-size: var(--text-sm);
+  color: var(--color-gray);
+  margin-top: var(--space-1);
+}
+
+/* --------------------------------------------------------------------------
+   4. Desktop: 2-Spalten nebeneinander
+   -------------------------------------------------------------------------- */
+@media (min-width: 768px) {
+  .contact {
+    grid-template-columns: 1fr 1fr;
+    align-items: start;
+  }
+}
+
+@media (min-width: 1024px) {
+  .contact {
+    grid-template-columns: 3fr 2fr;
+  }
+}

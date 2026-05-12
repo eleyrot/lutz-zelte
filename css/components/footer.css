@@ -1,0 +1,38 @@
+/* ==========================================================================
+   footer.css — Lutz Zelte GmbH
+   Zweck: Footer-Bereich mit Copyright und rechtlichen Links.
+   ========================================================================== */
+
+.footer {
+  background-color: var(--color-darker);
+  color: rgba(255, 255, 255, 0.6);
+  padding-block: var(--space-4);
+}
+
+.footer__inner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-2);
+  text-align: center;
+}
+
+.footer__copy {
+  font-size: var(--text-sm);
+}
+
+.footer__copy a {
+  color: rgba(255, 255, 255, 0.6);
+  transition: color var(--transition);
+}
+
+.footer__copy a:hover {
+  color: var(--color-primary);
+}
+
+@media (min-width: 768px) {
+  .footer__inner {
+    flex-direction: row;
+    justify-content: center;
+  }
+}

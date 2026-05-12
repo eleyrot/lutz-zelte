@@ -1,0 +1,114 @@
+/* ==========================================================================
+   team.css — Lutz Zelte GmbH
+   Zweck: Team-Karten in der #ueber-uns Sektion.
+   Bilder ablegen in: assets/images/team/<dateiname>.jpg
+   ========================================================================== */
+
+/* --------------------------------------------------------------------------
+   1. Abschnitt-Titel
+   -------------------------------------------------------------------------- */
+.team {
+  margin-top: var(--space-12);
+}
+
+.team__title {
+  font-family: var(--font-heading);
+  font-size: var(--text-2xl);
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--color-dark);
+  text-align: center;
+  margin-bottom: var(--space-6);
+}
+
+/* --------------------------------------------------------------------------
+   2. Grid — Mobile: 2 Spalten, Desktop: 4 Spalten
+   -------------------------------------------------------------------------- */
+.team__grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--space-4);
+}
+
+/* --------------------------------------------------------------------------
+   3. Einzelne Team-Karte
+   -------------------------------------------------------------------------- */
+.team-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: var(--space-2);
+}
+
+/* --------------------------------------------------------------------------
+   4. Foto-Container — quadratisch, rund
+   -------------------------------------------------------------------------- */
+.team-card__photo {
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  background-color: var(--color-gray-light);
+  border: 3px solid var(--color-gray-light);
+  transition: border-color var(--transition);
+}
+
+.team-card__photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: top center;
+}
+
+/* Platzhalter wenn Bild fehlt (onerror im HTML setzt diese Klasse) */
+.team-card__photo--empty {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--color-light);
+  border: 2px dashed var(--color-gray-light);
+}
+
+.team-card__photo--empty::after {
+  content: '👤';
+  font-size: 3rem;
+  opacity: 0.3;
+}
+
+/* Bild verstecken wenn Platzhalter aktiv */
+.team-card__photo--empty img {
+  display: none;
+}
+
+/* --------------------------------------------------------------------------
+   5. Text-Infos
+   -------------------------------------------------------------------------- */
+.team-card__name {
+  font-family: var(--font-heading);
+  font-size: var(--text-lg);
+  font-weight: 700;
+  color: var(--color-dark);
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+}
+
+.team-card__role {
+  font-size: var(--text-sm);
+  color: var(--color-gray);
+  margin-top: -var(--space-1);
+}
+
+/* --------------------------------------------------------------------------
+   6. Desktop
+   -------------------------------------------------------------------------- */
+@media (min-width: 768px) {
+  .team__grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+
+  .team-card__photo {
+    border-radius: var(--radius-lg);
+  }
+}

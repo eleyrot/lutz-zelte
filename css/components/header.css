@@ -1,0 +1,172 @@
+/* ==========================================================================
+   header.css — Lutz Zelte GmbH
+   Zweck: Fixe Navigation mit Logo, Anker-Links und mobilem Hamburger-Menü.
+   ========================================================================== */
+
+/* --------------------------------------------------------------------------
+   1. Header Wrapper
+   -------------------------------------------------------------------------- */
+.header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 100;
+  background-color: var(--color-white);
+  border-bottom: 3px solid var(--color-primary);
+  box-shadow: var(--shadow-sm);
+  transition: box-shadow var(--transition);
+}
+
+.header--scrolled {
+  box-shadow: var(--shadow-md);
+}
+
+.header__inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 64px;
+}
+
+/* --------------------------------------------------------------------------
+   2. Logo
+   -------------------------------------------------------------------------- */
+.header__logo img {
+  height: 44px;
+  width: auto;
+}
+
+/* --------------------------------------------------------------------------
+   3. Hamburger Toggle (mobile)
+   -------------------------------------------------------------------------- */
+.header__menu-toggle {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 5px;
+  width: 40px;
+  height: 40px;
+  padding: 6px;
+  border-radius: var(--radius-sm);
+  transition: background-color var(--transition);
+}
+
+.header__menu-toggle:hover {
+  background-color: var(--color-light);
+}
+
+.header__menu-toggle span {
+  display: block;
+  height: 2px;
+  background-color: var(--color-dark);
+  border-radius: 2px;
+  transition: transform var(--transition), opacity var(--transition);
+}
+
+/* Animiertes X beim Öffnen */
+.header__menu-toggle[aria-expanded="true"] span:nth-child(1) {
+  transform: translateY(7px) rotate(45deg);
+}
+.header__menu-toggle[aria-expanded="true"] span:nth-child(2) {
+  opacity: 0;
+}
+.header__menu-toggle[aria-expanded="true"] span:nth-child(3) {
+  transform: translateY(-7px) rotate(-45deg);
+}
+
+/* --------------------------------------------------------------------------
+   4. Navigation — Mobile (ausgeklappt)
+   -------------------------------------------------------------------------- */
+.nav {
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  background-color: var(--color-white);
+  border-top: 1px solid var(--color-gray-light);
+  box-shadow: var(--shadow-md);
+}
+
+.nav.is-open {
+  display: block;
+}
+
+.nav__list {
+  display: flex;
+  flex-direction: column;
+  padding: var(--space-2) 0;
+}
+
+.nav__link {
+  display: block;
+  padding: var(--space-1) var(--space-4);
+  font-family: var(--font-heading);
+  font-size: var(--text-lg);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--color-dark);
+  transition: color var(--transition), background-color var(--transition);
+}
+
+.nav__link:hover,
+.nav__link.is-active {
+  color: var(--color-darker);
+  background-color: var(--color-light);
+}
+
+.nav__link--cta {
+  color: var(--color-darker);
+  background-color: var(--color-primary);
+  margin: var(--space-1) var(--space-4);
+  padding-inline: var(--space-3);
+  border-radius: var(--radius-sm);
+  text-align: center;
+}
+
+.nav__link--cta:hover {
+  background-color: var(--color-primary-dark);
+  color: var(--color-darker);
+}
+
+/* --------------------------------------------------------------------------
+   5. Navigation — Desktop
+   -------------------------------------------------------------------------- */
+@media (min-width: 768px) {
+  .header__menu-toggle {
+    display: none;
+  }
+
+  .nav {
+    display: block;
+    position: static;
+    background: none;
+    border: none;
+    box-shadow: none;
+  }
+
+  .nav__list {
+    flex-direction: row;
+    align-items: center;
+    gap: var(--space-1);
+    padding: 0;
+  }
+
+  .nav__link {
+    padding: var(--space-1) var(--space-2);
+    font-size: var(--text-base);
+    border-radius: var(--radius-sm);
+  }
+
+  .nav__link:hover,
+  .nav__link.is-active {
+    background-color: var(--color-light);
+  }
+
+  .nav__link--cta {
+    margin: 0;
+    padding: var(--space-1) var(--space-2);
+  }
+}

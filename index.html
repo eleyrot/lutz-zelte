@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<!--
+  index.html — Lutz Zelte GmbH
+  Zweck: One-Pager Hauptdatei. Enthält die gesamte Seitenstruktur.
+  Navigation per Anker-Links (#verleih, #verkauf, #galerie, #ueber-uns, #kontakt).
+-->
+<html lang="de">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Lutz Zelte – Ihr TOP-Ansprechpartner in der Schweiz für Zeltverleih und Zeltverkauf. ProfiLine-Marke. Altenrhein, Kanton St. Gallen." />
+
+  <title>Lutz Zelte – ProfiLine | Zeltverleih & Zeltverkauf Schweiz</title>
+
+  <!-- Stylesheets -->
+  <link rel="stylesheet" href="css/base.css" />
+  <link rel="stylesheet" href="css/components/header.css" />
+  <link rel="stylesheet" href="css/components/hero.css" />
+  <link rel="stylesheet" href="css/components/cards.css" />
+  <link rel="stylesheet" href="css/components/gallery.css" />
+  <link rel="stylesheet" href="css/components/contact.css" />
+  <link rel="stylesheet" href="css/components/team.css" />
+  <link rel="stylesheet" href="css/components/footer.css" />
+</head>
+<body>
+
+  <!-- =====================================================================
+       HEADER — fixe Navigation mit Logo und Anker-Links
+       ===================================================================== -->
+  <header class="header" id="top">
+    <div class="container header__inner">
+
+      <a href="#top" class="header__logo" aria-label="Lutz Zelte – zur Startseite">
+        <img src="assets/images/logos/lutz-zelte-logo.png" alt="ProfiLine – Lutz Zelte Altenrhein" width="180" height="60" />
+      </a>
+
+      <button class="header__menu-toggle" aria-label="Navigation öffnen" aria-expanded="false" aria-controls="main-nav">
+        <span></span><span></span><span></span>
+      </button>
+
+      <nav class="nav" id="main-nav" aria-label="Hauptnavigation">
+        <ul class="nav__list">
+          <li><a class="nav__link" href="#verleih">Verleih</a></li>
+          <li><a class="nav__link" href="#verkauf">Verkauf</a></li>
+          <li><a class="nav__link" href="#galerie">Galerie</a></li>
+          <li><a class="nav__link" href="#ueber-uns">Über uns</a></li>
+          <li><a class="nav__link nav__link--cta" href="#kontakt">Kontakt</a></li>
+        </ul>
+      </nav>
+
+    </div>
+  </header>
+
+  <main>
+
+    <!-- ===================================================================
+         HERO — Einstieg, Slogan, primärer Call-to-Action
+         =================================================================== -->
+    <section class="hero" aria-label="Willkommen bei Lutz Zelte">
+      <div class="container hero__inner">
+        <div class="hero__content">
+          <p class="hero__label">Verleih & Verkauf · Seit 1999</p>
+          <h1 class="hero__title">Die Nr. 1 für Zelte<br>in der Schweiz.</h1>
+          <p class="hero__subtitle">Von der Firmenfeier bis zum Grossevent – wir liefern, montieren und betreuen. Schnell, zuverlässig, fair.</p>
+          <div class="hero__actions">
+            <a class="btn btn--primary" href="#kontakt">Jetzt anfragen</a>
+            <a class="btn btn--outline" href="#verleih">Angebot entdecken</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================================================================
+         VERLEIH — Zeltverleih Leistungen
+         =================================================================== -->
+    <section class="section section--alt" id="verleih" aria-labelledby="verleih-title">
+      <div class="container">
+        <header class="section__header">
+          <span class="section__label">Zeltverleih</span>
+          <h2 class="section__title" id="verleih-title">Ihr Event. Unser Zelt.</h2>
+          <p class="section__subtitle">Wir vermieten Festzelte für jede Grösse – inklusive Aufbau, Abbau und gesamter Ausstattung.</p>
+        </header>
+
+        <div class="cards">
+          <article class="card">
+            <div class="card__icon" aria-hidden="true">⛺</div>
+            <h3 class="card__title">Partyzelte</h3>
+            <p class="card__text">Für Geburtstage, Hochzeiten und private Feiern ab 10 Personen.</p>
+          </article>
+          <article class="card">
+            <div class="card__icon" aria-hidden="true">🏟️</div>
+            <h3 class="card__title">Event & Festival</h3>
+            <p class="card__text">Grosse Veranstaltungen mit kompletter Bühne, Bar und Beleuchtung.</p>
+          </article>
+          <article class="card">
+            <div class="card__icon" aria-hidden="true">🏢</div>
+            <h3 class="card__title">Firmenevent</h3>
+            <p class="card__text">Professionelle Zeltsysteme für Produktionspausen, Messen und Jubiläen.</p>
+          </article>
+          <article class="card">
+            <div class="card__icon" aria-hidden="true">🛋️</div>
+            <h3 class="card__title">Vollausstattung</h3>
+            <p class="card__text">Heizung, Böden, Tische, Stühle, Teppich, Beleuchtung – alles aus einer Hand.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================================================================
+         VERKAUF — ProfiLine Eigenmarke
+         =================================================================== -->
+    <section class="section" id="verkauf" aria-labelledby="verkauf-title">
+      <div class="container">
+        <header class="section__header">
+          <span class="section__label">ProfiLine Zeltverkauf</span>
+          <h2 class="section__title" id="verkauf-title">Qualität, die bleibt.</h2>
+          <p class="section__subtitle">Unsere eigene ProfiLine-Marke steht für einfache Handhabung, Blitzschnellen Aufbau und Top-Qualität zu fairen Preisen.</p>
+        </header>
+
+        <div class="cards">
+          <article class="card">
+            <h3 class="card__title">Faltzelte</h3>
+            <p class="card__text">Die absolute Nr. 1 – robust, schnell aufgebaut, alle Ersatzteile lagernd.</p>
+          </article>
+          <article class="card">
+            <h3 class="card__title">Lagerzelte</h3>
+            <p class="card__text">Für Industrie, Gewerbe und Landwirtschaft – winterfest und langlebig.</p>
+          </article>
+          <article class="card">
+            <h3 class="card__title">VIP & Partyzelte</h3>
+            <p class="card__text">Exklusive Zeltsysteme für den gehobenen Eventbereich.</p>
+          </article>
+          <article class="card">
+            <h3 class="card__title">Carports & Iglus</h3>
+            <p class="card__text">Flexible Überdachungen für Fahrzeuge und Aussenbereiche.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================================================================
+         GALERIE — Bildergalerie (Platzhalter, wird mit JS befüllt)
+         =================================================================== -->
+    <section class="section section--alt" id="galerie" aria-labelledby="galerie-title">
+      <div class="container">
+        <header class="section__header">
+          <span class="section__label">Galerie</span>
+          <h2 class="section__title" id="galerie-title">Unsere Projekte.</h2>
+          <p class="section__subtitle">Einblicke in realisierte Events, Hochzeiten und Firmenprojekte.</p>
+        </header>
+        <div class="gallery" id="gallery-grid" role="list" aria-label="Projektbilder">
+          <!-- Bilder werden hier eingefügt -->
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================================================================
+         ÜBER UNS — Geschichte, Team, USPs
+         =================================================================== -->
+    <section class="section" id="ueber-uns" aria-labelledby="ueber-uns-title">
+      <div class="container">
+        <header class="section__header">
+          <span class="section__label">Über uns</span>
+          <h2 class="section__title" id="ueber-uns-title">Seit 1999 für Sie da.</h2>
+          <p class="section__subtitle">Gegründet in Goldach, heute in Altenrhein – mit 6 Mitarbeitenden und über 25 Jahren Erfahrung.</p>
+        </header>
+
+        <div class="usps">
+          <div class="usp">
+            <strong class="usp__value">1999</strong>
+            <span class="usp__label">Gegründet</span>
+          </div>
+          <div class="usp">
+            <strong class="usp__value">25+</strong>
+            <span class="usp__label">Jahre Erfahrung</span>
+          </div>
+          <div class="usp">
+            <strong class="usp__value">24/7</strong>
+            <span class="usp__label">Erreichbar</span>
+          </div>
+          <div class="usp">
+            <strong class="usp__value">100%</strong>
+            <span class="usp__label">Schweizer Qualität</span>
+          </div>
+        </div>
+
+        <!-- Team — Bild in assets/images/team/ ablegen, Dateiname unten eintragen -->
+        <div class="team">
+          <h3 class="team__title">Unser Team</h3>
+          <div class="team__grid">
+
+            <article class="team-card">
+              <div class="team-card__photo">
+                <!-- Foto: assets/images/team/andreas-inauen.jpg -->
+                <img src="assets/images/team/andreas-inauen.jpg" alt="Andreas Inauen" onerror="this.closest('.team-card__photo').classList.add('team-card__photo--empty')" />
+              </div>
+              <div class="team-card__info">
+                <p class="team-card__name">Andreas Inauen</p>
+                <p class="team-card__role">Geschäftsführer</p>
+              </div>
+            </article>
+
+            <article class="team-card">
+              <div class="team-card__photo">
+                <!-- Foto: assets/images/team/person2.jpg -->
+                <img src="assets/images/team/person2.jpg" alt="Teammitglied" onerror="this.closest('.team-card__photo').classList.add('team-card__photo--empty')" />
+              </div>
+              <div class="team-card__info">
+                <p class="team-card__name">Name</p>
+                <p class="team-card__role">Funktion</p>
+              </div>
+            </article>
+
+            <article class="team-card">
+              <div class="team-card__photo">
+                <!-- Foto: assets/images/team/person3.jpg -->
+                <img src="assets/images/team/person3.jpg" alt="Teammitglied" onerror="this.closest('.team-card__photo').classList.add('team-card__photo--empty')" />
+              </div>
+              <div class="team-card__info">
+                <p class="team-card__name">Name</p>
+                <p class="team-card__role">Funktion</p>
+              </div>
+            </article>
+
+            <article class="team-card">
+              <div class="team-card__photo">
+                <!-- Foto: assets/images/team/person4.jpg -->
+                <img src="assets/images/team/person4.jpg" alt="Teammitglied" onerror="this.closest('.team-card__photo').classList.add('team-card__photo--empty')" />
+              </div>
+              <div class="team-card__info">
+                <p class="team-card__name">Name</p>
+                <p class="team-card__role">Funktion</p>
+              </div>
+            </article>
+
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ===================================================================
+         KONTAKT — Formular + Direktkontakt
+         =================================================================== -->
+    <section class="section section--alt" id="kontakt" aria-labelledby="kontakt-title">
+      <div class="container">
+        <header class="section__header">
+          <span class="section__label">Kontakt</span>
+          <h2 class="section__title" id="kontakt-title">Unverbindlich anfragen.</h2>
+          <p class="section__subtitle">Wir melden uns schnell zurück – auch für kurzfristige Anfragen.</p>
+        </header>
+
+        <div class="contact">
+          <form class="contact__form" id="contact-form" novalidate>
+            <div class="form__group">
+              <label class="form__label" for="name">Name *</label>
+              <input class="form__input" type="text" id="name" name="name" required autocomplete="name" />
+            </div>
+            <div class="form__group">
+              <label class="form__label" for="email">E-Mail *</label>
+              <input class="form__input" type="email" id="email" name="email" required autocomplete="email" />
+            </div>
+            <div class="form__group">
+              <label class="form__label" for="phone">Telefon</label>
+              <input class="form__input" type="tel" id="phone" name="phone" autocomplete="tel" />
+            </div>
+            <div class="form__group">
+              <label class="form__label" for="message">Nachricht *</label>
+              <textarea class="form__input form__input--textarea" id="message" name="message" rows="5" required></textarea>
+            </div>
+            <button class="btn btn--primary" type="submit">Anfrage senden</button>
+          </form>
+
+          <address class="contact__info">
+            <p class="contact__info-title">Direktkontakt</p>
+            <p><strong>Andreas Inauen</strong></p>
+            <p>Ilgenstrasse 3<br>9423 Altenrhein</p>
+            <p><a href="tel:+41787445329">078 744 53 29</a></p>
+            <p><a href="mailto:lutz.zelte@bluewin.ch">lutz.zelte@bluewin.ch</a></p>
+            <p class="contact__availability">Erreichbar: 24/7 nach Vereinbarung</p>
+          </address>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- =====================================================================
+       FOOTER
+       ===================================================================== -->
+  <footer class="footer" aria-label="Seitenfuss">
+    <div class="container footer__inner">
+      <p class="footer__copy">&copy; 2025 Lutz Zelte GmbH · Altenrhein · <a href="#">Impressum</a> · <a href="#">Datenschutz</a></p>
+    </div>
+  </footer>
+
+  <script src="js/main.js" type="module" defer></script>
+
+</body>
+</html>
