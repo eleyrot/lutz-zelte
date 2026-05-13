@@ -19,6 +19,8 @@
   <link rel="stylesheet" href="css/components/cards.css" />
   <link rel="stylesheet" href="css/components/gallery.css" />
   <link rel="stylesheet" href="css/components/contact.css" />
+  <link rel="stylesheet" href="css/components/stats.css" />
+  <link rel="stylesheet" href="css/components/referenzen.css" />
   <link rel="stylesheet" href="css/components/team.css" />
   <link rel="stylesheet" href="css/components/footer.css" />
 </head>
@@ -57,6 +59,29 @@
          HERO — Einstieg, Slogan, primärer Call-to-Action
          =================================================================== -->
     <section class="hero" aria-label="Willkommen bei Lutz Zelte">
+
+      <!-- Stats — direkt unter der Kopfzeile, vor dem Hauptinhalt -->
+      <div class="hero__stats" aria-label="Unsere Zahlen">
+        <div class="container stats__grid">
+          <div class="stats__item">
+            <strong class="stats__number" data-target="6270" data-suffix="">0</strong>
+            <span class="stats__label">Zelte gebaut</span>
+          </div>
+          <div class="stats__item">
+            <strong class="stats__number" data-target="8386" data-suffix="">0</strong>
+            <span class="stats__label">Klienten</span>
+          </div>
+          <div class="stats__item">
+            <strong class="stats__number" data-target="321" data-suffix="">0</strong>
+            <span class="stats__label">Ab Lager</span>
+          </div>
+          <div class="stats__item">
+            <strong class="stats__number" data-target="1" data-prefix="Nr. " data-suffix="">0</strong>
+            <span class="stats__label">Faltzelte Schweiz</span>
+          </div>
+        </div>
+      </div>
+
       <div class="container hero__inner">
         <div class="hero__content">
           <p class="hero__label">Verleih & Verkauf · Seit 1999</p>
@@ -150,6 +175,70 @@
         </header>
         <div class="gallery" id="gallery-grid" role="list" aria-label="Projektbilder">
           <!-- Bilder werden hier eingefügt -->
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================================================================
+         REFERENZEN — Automatisch laufender Logo-Slider
+         Desktop: Schwarz-Weiss | Mobile: Farbe
+         Neue Logos: Bild in assets/images/referenzen/ ablegen und
+         unten im Track (einmal) hinzufügen — der Rest läuft automatisch.
+         =================================================================== -->
+    <section class="section referenzen" id="referenzen" aria-labelledby="referenzen-title">
+      <div class="container">
+        <header class="section__header">
+          <span class="section__label">Referenzen</span>
+          <h2 class="section__title" id="referenzen-title">Vertrauen seit 1999.</h2>
+          <p class="section__subtitle">Unternehmen und Veranstalter, die auf uns zählen.</p>
+        </header>
+      </div>
+
+      <!-- Slider läuft über volle Breite, ausserhalb des Containers -->
+      <div class="referenzen__slider" aria-hidden="true">
+        <div class="referenzen__track">
+          <!-- === BILDER (einmal hinzufügen — werden automatisch dupliziert) === -->
+          <div class="referenzen__item"><img src="assets/images/referenzen/Logo-01.jpg" alt="Referenz" loading="lazy"></div>
+          <div class="referenzen__item"><img src="assets/images/referenzen/Logo-02.jpg" alt="Referenz" loading="lazy"></div>
+          <div class="referenzen__item"><img src="assets/images/referenzen/Logo-03.jpg" alt="Referenz" loading="lazy"></div>
+          <div class="referenzen__item"><img src="assets/images/referenzen/Logo-04.jpg" alt="Referenz" loading="lazy"></div>
+          <div class="referenzen__item"><img src="assets/images/referenzen/Logo-05.jpg" alt="Referenz" loading="lazy"></div>
+          <div class="referenzen__item"><img src="assets/images/referenzen/Logo-06.jpg" alt="Referenz" loading="lazy"></div>
+          <div class="referenzen__item"><img src="assets/images/referenzen/Logo-07.jpg" alt="Referenz" loading="lazy"></div>
+          <div class="referenzen__item"><img src="assets/images/referenzen/Logo-08.jpg" alt="Referenz" loading="lazy"></div>
+          <div class="referenzen__item"><img src="assets/images/referenzen/Logo-09.jpg" alt="Referenz" loading="lazy"></div>
+          <div class="referenzen__item"><img src="assets/images/referenzen/Logo-10.jpg" alt="Referenz" loading="lazy"></div>
+          <div class="referenzen__item"><img src="assets/images/referenzen/Logo-11.jpg" alt="Referenz" loading="lazy"></div>
+          <div class="referenzen__item"><img src="assets/images/referenzen/Logo-12.jpg" alt="Referenz" loading="lazy"></div>
+          <div class="referenzen__item"><img src="assets/images/referenzen/Logo-13.jpg" alt="Referenz" loading="lazy"></div>
+          <div class="referenzen__item"><img src="assets/images/referenzen/Logo-14.jpg" alt="Referenz" loading="lazy"></div>
+          <div class="referenzen__item"><img src="assets/images/referenzen/Logo-15.jpg" alt="Referenz" loading="lazy"></div>
+          <div class="referenzen__item"><img src="assets/images/referenzen/Logo-16.jpg" alt="Referenz" loading="lazy"></div>
+          <div class="referenzen__item"><img src="assets/images/referenzen/Logo-17.jpg" alt="Referenz" loading="lazy"></div>
+          <div class="referenzen__item"><img src="assets/images/referenzen/Logo-18.jpg" alt="Referenz" loading="lazy"></div>
+          <div class="referenzen__item"><img src="assets/images/referenzen/Logo-19.jpg" alt="Referenz" loading="lazy"></div>
+          <div class="referenzen__item"><img src="assets/images/referenzen/JM Speicher.png" alt="Referenz" loading="lazy"></div>
+          <!-- === DUPLIKAT für nahtlosen Loop (nicht bearbeiten) === -->
+          <div class="referenzen__item" aria-hidden="true"><img src="assets/images/referenzen/Logo-01.jpg" alt="" loading="lazy"></div>
+          <div class="referenzen__item" aria-hidden="true"><img src="assets/images/referenzen/Logo-02.jpg" alt="" loading="lazy"></div>
+          <div class="referenzen__item" aria-hidden="true"><img src="assets/images/referenzen/Logo-03.jpg" alt="" loading="lazy"></div>
+          <div class="referenzen__item" aria-hidden="true"><img src="assets/images/referenzen/Logo-04.jpg" alt="" loading="lazy"></div>
+          <div class="referenzen__item" aria-hidden="true"><img src="assets/images/referenzen/Logo-05.jpg" alt="" loading="lazy"></div>
+          <div class="referenzen__item" aria-hidden="true"><img src="assets/images/referenzen/Logo-06.jpg" alt="" loading="lazy"></div>
+          <div class="referenzen__item" aria-hidden="true"><img src="assets/images/referenzen/Logo-07.jpg" alt="" loading="lazy"></div>
+          <div class="referenzen__item" aria-hidden="true"><img src="assets/images/referenzen/Logo-08.jpg" alt="" loading="lazy"></div>
+          <div class="referenzen__item" aria-hidden="true"><img src="assets/images/referenzen/Logo-09.jpg" alt="" loading="lazy"></div>
+          <div class="referenzen__item" aria-hidden="true"><img src="assets/images/referenzen/Logo-10.jpg" alt="" loading="lazy"></div>
+          <div class="referenzen__item" aria-hidden="true"><img src="assets/images/referenzen/Logo-11.jpg" alt="" loading="lazy"></div>
+          <div class="referenzen__item" aria-hidden="true"><img src="assets/images/referenzen/Logo-12.jpg" alt="" loading="lazy"></div>
+          <div class="referenzen__item" aria-hidden="true"><img src="assets/images/referenzen/Logo-13.jpg" alt="" loading="lazy"></div>
+          <div class="referenzen__item" aria-hidden="true"><img src="assets/images/referenzen/Logo-14.jpg" alt="" loading="lazy"></div>
+          <div class="referenzen__item" aria-hidden="true"><img src="assets/images/referenzen/Logo-15.jpg" alt="" loading="lazy"></div>
+          <div class="referenzen__item" aria-hidden="true"><img src="assets/images/referenzen/Logo-16.jpg" alt="" loading="lazy"></div>
+          <div class="referenzen__item" aria-hidden="true"><img src="assets/images/referenzen/Logo-17.jpg" alt="" loading="lazy"></div>
+          <div class="referenzen__item" aria-hidden="true"><img src="assets/images/referenzen/Logo-18.jpg" alt="" loading="lazy"></div>
+          <div class="referenzen__item" aria-hidden="true"><img src="assets/images/referenzen/Logo-19.jpg" alt="" loading="lazy"></div>
+          <div class="referenzen__item" aria-hidden="true"><img src="assets/images/referenzen/JM Speicher.png" alt="" loading="lazy"></div>
         </div>
       </div>
     </section>

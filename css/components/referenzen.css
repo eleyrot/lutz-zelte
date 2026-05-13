@@ -1,0 +1,104 @@
+/* ==========================================================================
+   referenzen.css — Lutz Zelte GmbH
+   Zweck: Automatisch laufender Referenzen-Logo-Slider.
+   Mobile: Farbe | Desktop: Schwarz-Weiss mit Hover-Farbe
+   Neue Logos: In assets/images/referenzen/ ablegen + im HTML eintragen.
+   ========================================================================== */
+
+/* --------------------------------------------------------------------------
+   1. Sektion
+   -------------------------------------------------------------------------- */
+.referenzen {
+  overflow: hidden;
+  padding-bottom: var(--space-12);
+}
+
+.referenzen .section__header {
+  margin-bottom: var(--space-6);
+}
+
+/* --------------------------------------------------------------------------
+   2. Slider-Wrapper — maskiert die Ränder mit Fade-Effekt
+   -------------------------------------------------------------------------- */
+.referenzen__slider {
+  position: relative;
+  overflow: hidden;
+  /* Weiche Ausblendung links und rechts */
+  -webkit-mask-image: linear-gradient(
+    to right,
+    transparent 0%,
+    black 8%,
+    black 92%,
+    transparent 100%
+  );
+  mask-image: linear-gradient(
+    to right,
+    transparent 0%,
+    black 8%,
+    black 92%,
+    transparent 100%
+  );
+}
+
+/* --------------------------------------------------------------------------
+   3. Track — läuft von rechts nach links in einem Loop
+   -------------------------------------------------------------------------- */
+.referenzen__track {
+  display: flex;
+  align-items: center;
+  gap: var(--space-6);
+  width: max-content;
+  animation: ticker 40s linear infinite;
+  will-change: transform;
+}
+
+/* Pause bei Hover (Desktop) */
+.referenzen__slider:hover .referenzen__track {
+  animation-play-state: paused;
+}
+
+@keyframes ticker {
+  0%   { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+/* --------------------------------------------------------------------------
+   4. Einzelnes Logo-Item
+   -------------------------------------------------------------------------- */
+.referenzen__item {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 60px;
+}
+
+.referenzen__item img {
+  height: 100%;
+  width: auto;
+  max-width: 160px;
+  object-fit: contain;
+  /* Mobile: Farbe */
+  filter: none;
+  transition: filter var(--transition), opacity var(--transition);
+  opacity: 0.85;
+}
+
+/* --------------------------------------------------------------------------
+   5. Desktop: Schwarz-Weiss — Farbe bei Hover
+   -------------------------------------------------------------------------- */
+@media (min-width: 768px) {
+  .referenzen__item img {
+    filter: grayscale(100%);
+    opacity: 0.65;
+  }
+
+  .referenzen__item:hover img {
+    filter: grayscale(0%);
+    opacity: 1;
+  }
+
+  .referenzen__item {
+    height: 70px;
+  }
+}

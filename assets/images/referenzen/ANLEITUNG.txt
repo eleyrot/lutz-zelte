@@ -1,0 +1,26 @@
+REFERENZEN-LOGOS — Anleitung für neue Bilder
+=============================================
+
+NEUE REFERENZ HINZUFÜGEN:
+1. Logo-Datei in DIESEN Ordner ablegen (JPG oder PNG)
+   Empfohlene Grösse: Breite ca. 300px, weisser oder transparenter Hintergrund
+
+2. In index.html den folgenden Block ZWEIMAL einfügen:
+   - Einmal im Bereich "=== BILDER ===" (das Original)
+   - Einmal im Bereich "=== DUPLIKAT ===" (für den nahtlosen Loop)
+
+   Beispiel für ein neues Logo "mein-kunde.jpg":
+
+   Original-Block:
+   <div class="referenzen__item">
+     <img src="assets/images/referenzen/mein-kunde.jpg" alt="Referenz" loading="lazy">
+   </div>
+
+   Duplikat-Block:
+   <div class="referenzen__item" aria-hidden="true">
+     <img src="assets/images/referenzen/mein-kunde.jpg" alt="" loading="lazy">
+   </div>
+
+3. Speichern — der Slider passt sich automatisch an.
+
+AKTUELLE DATEIEN: Logo-01 bis Logo-19, JM Speicher.png

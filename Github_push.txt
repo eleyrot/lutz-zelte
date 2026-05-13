@@ -1,0 +1,4 @@
+cd "J:\Silvan\01_Projekte\104_Webseite\Claude\Lutz-Zelte"
+git add .
+git commit -m "Beschreibung der Änderung"
+git push
