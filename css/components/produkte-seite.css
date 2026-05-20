@@ -1,0 +1,97 @@
+/* ==========================================================================
+   produkte-seite.css — Lutz Zelte GmbH
+   Zweck: Styles für produkte.html — Hero, Filter-Tabs, Ladezu­stand, Teaser.
+   ========================================================================== */
+
+/* --------------------------------------------------------------------------
+   1. Produkte-Seite Hero
+   -------------------------------------------------------------------------- */
+.produkte-hero {
+  padding: var(--space-8) 0 var(--space-4);
+  background-color: var(--color-dark);
+  color: var(--color-white);
+}
+
+.produkte-hero .section__label {
+  color: var(--color-primary);
+}
+
+.produkte-hero__title {
+  font-family: var(--font-heading);
+  font-size: clamp(2rem, 5vw, 3.5rem);
+  font-weight: 900;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  line-height: 1.1;
+  margin: var(--space-1) 0;
+}
+
+.produkte-hero__subtitle {
+  color: rgba(255, 255, 255, 0.7);
+  font-size: var(--text-lg);
+  max-width: 56ch;
+}
+
+/* --------------------------------------------------------------------------
+   2. Filter-Tabs
+   -------------------------------------------------------------------------- */
+.filter-tabs {
+  display: flex;
+  gap: var(--space-2);
+  flex-wrap: wrap;
+  margin-bottom: var(--space-6);
+  padding-bottom: var(--space-3);
+  border-bottom: 2px solid var(--color-gray-light);
+}
+
+.filter-tab {
+  font-family: var(--font-heading);
+  font-size: var(--text-sm);
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  padding: var(--space-1) var(--space-3);
+  border: 2px solid var(--color-gray-light);
+  border-radius: 999px;
+  background: transparent;
+  color: var(--color-gray);
+  cursor: pointer;
+  transition: all var(--transition);
+}
+
+.filter-tab:hover {
+  border-color: var(--color-dark);
+  color: var(--color-dark);
+}
+
+.filter-tab--active {
+  background-color: var(--color-dark);
+  border-color: var(--color-dark);
+  color: var(--color-white);
+}
+
+/* --------------------------------------------------------------------------
+   3. Zustands-Texte (laden / leer)
+   -------------------------------------------------------------------------- */
+.produkte__laden,
+.produkte__leer {
+  color: var(--color-gray);
+  padding: var(--space-8) 0;
+  text-align: center;
+}
+
+.produkte__laden {
+  font-style: italic;
+}
+
+/* --------------------------------------------------------------------------
+   4. Teaser auf Startseite
+   -------------------------------------------------------------------------- */
+.produkte__mehr {
+  margin-top: var(--space-6);
+  text-align: center;
+}
+
+.produkte__grid--teaser {
+  max-width: 900px;
+}
