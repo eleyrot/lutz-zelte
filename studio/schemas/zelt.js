@@ -158,10 +158,43 @@ export default {
     },
     {
       name:  'ausstattung',
-      title: 'Ausstattung / Inklusive',
+      title: 'Inklusive (im Preis inbegriffen)',
       type:  'array',
       of:    [{ type: 'string' }],
-      description: 'z.B. «Seitenwand Standard», «Seitenwand mit Türe»',
+      description: 'Was ist im Grundpreis enthalten, z.B. «Gestell», «Dach»',
+    },
+    {
+      name:  'zubehoer',
+      title: 'Optionales Zubehör (mit Preis)',
+      type:  'array',
+      of: [
+        {
+          type:  'object',
+          name:  'zubehoer_position',
+          title: 'Zubehör-Position',
+          fields: [
+            {
+              name:        'bezeichnung',
+              title:       'Bezeichnung',
+              type:        'string',
+              description: 'z.B. «Seitenwand Standard weiss»',
+              validation:  Rule => Rule.required(),
+            },
+            {
+              name:        'preis_chf',
+              title:       'Preis (CHF, exkl. MwSt.)',
+              type:        'number',
+              description: 'z.B. 70',
+            },
+          ],
+          preview: {
+            select: { title: 'bezeichnung', subtitle: 'preis_chf' },
+            prepare({ title, subtitle }) {
+              return { title, subtitle: subtitle ? `Fr. ${subtitle}.–` : 'kein Preis' };
+            },
+          },
+        },
+      ],
     },
 
     /* -----------------------------------------------------------------------

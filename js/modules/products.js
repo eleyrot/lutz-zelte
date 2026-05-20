@@ -98,6 +98,18 @@ function renderKarte(p) {
   const ausstattungHTML = p.ausstattung?.length
     ? `<ul class="produkt__liste">${p.ausstattung.map(a => `<li>${a}</li>`).join('')}</ul>` : '';
 
+  const zubehoerHTML = p.zubehoer?.length
+    ? `<div class="produkt__zubehoer">
+        <p class="produkt__zubehoer-titel">Optionales Zubehör</p>
+        <table class="produkt__zubehoer-tabelle">
+          ${p.zubehoer.map(z => `
+          <tr>
+            <td class="produkt__zubehoer-name">${z.bezeichnung}</td>
+            <td class="produkt__zubehoer-preis">${z.preis_chf ? formatPreis(z.preis_chf) : 'auf Anfrage'}</td>
+          </tr>`).join('')}
+        </table>
+      </div>` : '';
+
   const serieHTML = p.serie
     ? `<span class="produkt__serie">${p.serie}</span>` : '';
 
@@ -114,6 +126,7 @@ function renderKarte(p) {
         ${hoehenHTML}
         ${p.beschreibung ? `<p class="produkt__beschreibung">${p.beschreibung}</p>` : ''}
         ${ausstattungHTML}
+        ${zubehoerHTML}
         ${farbenHTML}
         <div class="produkt__footer">
           ${preis}

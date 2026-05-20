@@ -226,7 +226,47 @@
 }
 
 /* --------------------------------------------------------------------------
-   10. Farbchips
+   10. Optionales Zubehör
+   -------------------------------------------------------------------------- */
+.produkt__zubehoer {
+  border-top: 1px dashed var(--color-gray-light);
+  padding-top: var(--space-2);
+}
+
+.produkt__zubehoer-titel {
+  font-size: var(--text-xs);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--color-gray);
+  margin-bottom: 6px;
+}
+
+.produkt__zubehoer-tabelle {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: var(--text-xs);
+}
+
+.produkt__zubehoer-tabelle tr + tr td {
+  border-top: 1px solid var(--color-gray-light);
+}
+
+.produkt__zubehoer-name {
+  color: var(--color-gray);
+  padding: 4px 0;
+}
+
+.produkt__zubehoer-preis {
+  color: var(--color-dark);
+  font-weight: 700;
+  text-align: right;
+  white-space: nowrap;
+  padding: 4px 0 4px var(--space-2);
+}
+
+/* --------------------------------------------------------------------------
+   11. Farbchips
    -------------------------------------------------------------------------- */
 .produkt__farben {
   display: flex;
