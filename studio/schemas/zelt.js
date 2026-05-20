@@ -17,7 +17,7 @@ export default {
       name:        'name',
       title:       'Name des Zelts',
       type:        'string',
-      description: 'z.B. «Partyzelt Classic 6×12» oder «ProfiLine Faltzelt 3×6»',
+      description: 'z.B. «ProfiLine Faltzelt 3×3» oder «Faltzelt 6×6 (6-eckig)»',
       validation:  Rule => Rule.required(),
     },
     {
@@ -35,11 +35,37 @@ export default {
       validation: Rule => Rule.required(),
     },
     {
-      name:        'groesse_m',
-      title:       'Grösse',
+      name:        'serie',
+      title:       'Serie',
       type:        'string',
-      description: 'z.B. «6 × 12 m»',
-      validation:  Rule => Rule.required(),
+      description: 'z.B. «Serie 1» oder «Serie 2»',
+      options: {
+        list: ['Serie 1', 'Serie 2'],
+      },
+    },
+    {
+      name:        'groesse_m',
+      title:       'Grösse (Anzeige-Text)',
+      type:        'string',
+      description: 'Anzeige auf Website, z.B. «3 × 3 m» — wird automatisch aus Breite/Länge generiert wenn leer',
+    },
+    {
+      name:        'groesse_b_m',
+      title:       'Breite (m)',
+      type:        'number',
+      description: 'Breite in Meter, z.B. 3',
+    },
+    {
+      name:        'groesse_l_m',
+      title:       'Länge (m)',
+      type:        'number',
+      description: 'Länge in Meter, z.B. 6',
+    },
+    {
+      name:        'besonderheit',
+      title:       'Besonderheit',
+      type:        'string',
+      description: 'z.B. «6-eckig» oder «Sonderform»',
     },
     {
       name:        'kapazitaet_personen',
@@ -52,6 +78,18 @@ export default {
        Preise (je nach Kategorie ausfüllen)
        ----------------------------------------------------------------------- */
     {
+      name:        'preis_gestell',
+      title:       'Preis Gestell (CHF, exkl. MwSt.)',
+      type:        'number',
+      description: 'Gestell-Preis aus Preisliste, z.B. 400',
+    },
+    {
+      name:        'preis_dach',
+      title:       'Preis Dach (CHF, exkl. MwSt.)',
+      type:        'number',
+      description: 'Dach-Preis aus Preisliste, z.B. 200',
+    },
+    {
       name:        'preis_pro_tag',
       title:       'Mietpreis pro Tag (CHF)',
       type:        'number',
@@ -59,9 +97,54 @@ export default {
     },
     {
       name:        'preis_chf',
-      title:       'Kaufpreis (CHF)',
+      title:       'Kaufpreis gesamt (CHF)',
       type:        'number',
-      description: 'Nur für Verkauf (Neu oder Occasion) ausfüllen',
+      description: 'Gesamtpreis für Occasion — bei Neuware wird Gestell+Dach verwendet',
+    },
+
+    /* -----------------------------------------------------------------------
+       Technische Daten
+       ----------------------------------------------------------------------- */
+    {
+      name:        'gewicht_kg',
+      title:       'Gewicht (kg)',
+      type:        'number',
+      description: 'Gesamtgewicht inkl. Gestell und Dach',
+    },
+    {
+      name:        'hoehe_1_m',
+      title:       'Höhe 1 — Seite unten (m)',
+      type:        'number',
+      description: 'Untere Seitenhöhe, z.B. 2.01',
+    },
+    {
+      name:        'hoehe_2_m',
+      title:       'Höhe 2 — Seite oben (m)',
+      type:        'number',
+      description: 'Obere Seitenhöhe, z.B. 2.29',
+    },
+    {
+      name:        'hoehe_3_m',
+      title:       'Höhe 3 — First / Spitze (m)',
+      type:        'number',
+      description: 'Höchster Punkt, z.B. 3.25',
+    },
+    {
+      name:  'farben',
+      title: 'Verfügbare Farben',
+      type:  'array',
+      of:    [{ type: 'string' }],
+      options: {
+        list: [
+          { title: '⬜ Weiss',    value: 'weiss'   },
+          { title: '🟦 Blau',    value: 'blau'    },
+          { title: '🟥 Rot',     value: 'rot'     },
+          { title: '🟨 Gelb',    value: 'gelb'    },
+          { title: '🟩 Grün',    value: 'gruen'   },
+          { title: '⬛ Schwarz', value: 'schwarz' },
+        ],
+        layout: 'grid',
+      },
     },
 
     /* -----------------------------------------------------------------------
@@ -78,7 +161,7 @@ export default {
       title: 'Ausstattung / Inklusive',
       type:  'array',
       of:    [{ type: 'string' }],
-      description: 'z.B. «Aufbau inklusive», «Seitenteile inklusive»',
+      description: 'z.B. «Seitenwand Standard», «Seitenwand mit Türe»',
     },
 
     /* -----------------------------------------------------------------------
