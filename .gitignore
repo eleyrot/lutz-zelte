@@ -1,0 +1,8 @@
+# Sanity Studio — nur Quellcode committen, keine installierten Pakete
+studio/node_modules/
+studio/.sanity/
+studio/deploy.ps1
+
+# Allgemein
+.DS_Store
+Thumbs.db
