@@ -1,7 +1,7 @@
 /* ==========================================================================
    sanity.config.js — Lutz Zelte GmbH
    Zweck: Sanity Studio Konfiguration.
-   Studio-URL: https://lutz-zelte.sanity.studio
+   Studio-URL: https://eleyrot.github.io/lutz-zelte/admin
    ========================================================================== */
 
 import { defineConfig } from 'sanity';
@@ -15,6 +15,8 @@ export default defineConfig({
 
   projectId: '5ndwm7ob',
   dataset:   'production',
+
+  basePath: '/lutz-zelte/admin',
 
   plugins: [
     structureTool(),
