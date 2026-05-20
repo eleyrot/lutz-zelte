@@ -1,0 +1,67 @@
+[
+  {
+    "id": "mz-001",
+    "name": "Partyzelt Classic 6×12",
+    "kategorie": "vermietung",
+    "groesse_m": "6 × 12 m",
+    "kapazitaet_personen": 60,
+    "preis_pro_tag": 280,
+    "beschreibung": "Klassisches Partyzelt, ideal für Geburtstage, Hochzeiten und private Anlässe. Inkl. Aufbau und Abbau.",
+    "ausstattung": ["Seitenteile inklusive", "Aufbau/Abbau inklusive"],
+    "bilder": [],
+    "verfuegbar": true,
+    "reihenfolge": 1
+  },
+  {
+    "id": "mz-002",
+    "name": "Festzelt Profi 10×20",
+    "kategorie": "vermietung",
+    "groesse_m": "10 × 20 m",
+    "kapazitaet_personen": 150,
+    "preis_pro_tag": 680,
+    "beschreibung": "Grosses Festzelt für Events und Firmenanlässe. Wetterfest, stabil, mit Vollausstattung erhältlich.",
+    "ausstattung": ["Heizung optional", "Boden optional", "Beleuchtung inklusive"],
+    "bilder": [],
+    "verfuegbar": true,
+    "reihenfolge": 2
+  },
+  {
+    "id": "vk-001",
+    "name": "ProfiLine Faltzelt 3×6",
+    "kategorie": "neu",
+    "groesse_m": "3 × 6 m",
+    "kapazitaet_personen": null,
+    "preis_chf": 1290,
+    "beschreibung": "Unser Bestseller – robust, schnell aufgebaut, alle Ersatzteile lagernd. Geliefert mit Tragetasche.",
+    "ausstattung": ["Aluminium-Gestell", "Plane 550g/m²", "Tragetasche inklusive"],
+    "bilder": [],
+    "verfuegbar": true,
+    "reihenfolge": 1
+  },
+  {
+    "id": "vk-002",
+    "name": "ProfiLine Faltzelt 4×8",
+    "kategorie": "neu",
+    "groesse_m": "4 × 8 m",
+    "kapazitaet_personen": null,
+    "preis_chf": 2190,
+    "beschreibung": "Grössere Variante für Märkte, Messen und Events. Stabiles Aluminiumgestell, schnell auf- und abbaubar.",
+    "ausstattung": ["Aluminium-Gestell", "Plane 550g/m²", "Seitenteile optional"],
+    "bilder": [],
+    "verfuegbar": true,
+    "reihenfolge": 2
+  },
+  {
+    "id": "oc-001",
+    "name": "Occasion Partyzelt 5×10",
+    "kategorie": "occasion",
+    "groesse_m": "5 × 10 m",
+    "kapazitaet_personen": 60,
+    "preis_chf": 1800,
+    "beschreibung": "Gut erhaltenes Occasion-Zelt, gereinigt und geprüft. Ideal für den Einstieg zu günstigem Preis.",
+    "ausstattung": ["Seitenteile inklusive", "Geprüft und gereinigt"],
+    "bilder": [],
+    "verfuegbar": true,
+    "reihenfolge": 1
+  }
+]
