@@ -51,7 +51,7 @@ function renderKarte(p) {
     preis = p.preis_pro_tag
       ? `<span class="produkt__preis">${formatPreis(p.preis_pro_tag)} <small>/ Tag</small></span>` : '';
   } else if (p.preis_gestell) {
-    preis = `<span class="produkt__preis">ab ${formatPreis(p.preis_gestell)} <small>Gestell</small></span>`;
+    preis = `<span class="produkt__preis">ab ${formatPreis(p.preis_gestell)}</span>`;
   } else if (p.preis_chf) {
     preis = `<span class="produkt__preis">${formatPreis(p.preis_chf)}</span>`;
   }
