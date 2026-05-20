@@ -190,6 +190,13 @@ export default {
        Status & Sortierung
        ----------------------------------------------------------------------- */
     {
+      name:         'highlight',
+      title:        'Auf Startseite anzeigen',
+      type:         'boolean',
+      description:  'Dieses Zelt als Highlight auf der Startseite zeigen (max. 3 empfohlen)',
+      initialValue: false,
+    },
+    {
       name:         'verfuegbar',
       title:        'Verfügbar',
       type:         'boolean',

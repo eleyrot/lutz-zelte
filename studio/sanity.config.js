@@ -8,6 +8,7 @@ import { defineConfig } from 'sanity';
 import { structureTool } from 'sanity/structure';
 import { visionTool } from '@sanity/vision';
 import { schemaTypes } from './schemas/index.js';
+import { structure } from './structure.js';
 
 export default defineConfig({
   name:    'lutz-zelte',
@@ -19,7 +20,7 @@ export default defineConfig({
   basePath: '/lutz-zelte/admin',
 
   plugins: [
-    structureTool(),
+    structureTool({ structure }),
     visionTool(),
   ],
 

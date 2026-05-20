@@ -44,7 +44,7 @@
       <nav class="nav" id="main-nav" aria-label="Hauptnavigation">
         <ul class="nav__list">
           <li><a class="nav__link" href="#verleih">Verleih</a></li>
-          <li><a class="nav__link" href="#verkauf">Verkauf</a></li>
+          <li><a class="nav__link" href="produkte.html">Produkte</a></li>
           <li><a class="nav__link" href="#galerie">Galerie</a></li>
           <li><a class="nav__link" href="#ueber-uns">Über uns</a></li>
           <li><a class="nav__link nav__link--cta" href="#kontakt">Kontakt</a></li>
@@ -90,7 +90,7 @@
           <p class="hero__subtitle">Von der Firmenfeier bis zum Grossevent – wir liefern, montieren und betreuen. Schnell, zuverlässig, fair.</p>
           <div class="hero__actions">
             <a class="btn btn--primary" href="#kontakt">Jetzt anfragen</a>
-            <a class="btn btn--outline" href="#verleih">Angebot entdecken</a>
+            <a class="btn btn--outline" href="produkte.html">Angebot entdecken</a>
           </div>
         </div>
       </div>
@@ -130,22 +130,18 @@
           </article>
         </div>
 
-        <!-- Dynamische Mietzelte aus products.js / Sanity -->
-        <h3 class="produkte__section-title">Unsere Mietzelte</h3>
-        <div id="produkte-vermietung" hidden></div>
-
       </div>
     </section>
 
     <!-- ===================================================================
-         VERKAUF — ProfiLine Eigenmarke
+         PRODUKTE — Highlight-Teaser (max. 3 Zelte aus Sanity)
          =================================================================== -->
     <section class="section" id="verkauf" aria-labelledby="verkauf-title">
       <div class="container">
         <header class="section__header">
           <span class="section__label">ProfiLine Zeltverkauf</span>
           <h2 class="section__title" id="verkauf-title">Qualität, die bleibt.</h2>
-          <p class="section__subtitle">Unsere eigene ProfiLine-Marke steht für einfache Handhabung, Blitzschnellen Aufbau und Top-Qualität zu fairen Preisen.</p>
+          <p class="section__subtitle">Unsere eigene ProfiLine-Marke – einfache Handhabung, Blitzschneller Aufbau, Top-Qualität zu fairen Preisen.</p>
         </header>
 
         <div class="cards">
@@ -167,13 +163,9 @@
           </article>
         </div>
 
-        <!-- Dynamische Kaufzelte (Neu) aus products.js / Sanity -->
-        <h3 class="produkte__section-title">Neue Zelte kaufen</h3>
-        <div id="produkte-verkauf" hidden></div>
-
-        <!-- Dynamische Occasion-Zelte aus products.js / Sanity -->
-        <h3 class="produkte__section-title">Occasion-Zelte</h3>
-        <div id="produkte-occasion" hidden></div>
+        <!-- Dynamische Highlight-Zelte (Teaser) aus Sanity -->
+        <h3 class="produkte__section-title">Ausgewählte Produkte</h3>
+        <div id="produkte-teaser" hidden></div>
 
       </div>
     </section>

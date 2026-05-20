@@ -1,8 +1,100 @@
 /* ==========================================================================
    products.css — Lutz Zelte GmbH
-   Zweck: Produkt-Karten für Verleih (Mietzelte), Verkauf (Neu + Occasion).
-   Daten kommen dynamisch aus JSON via products.js.
+   Zweck: Produkt-Karten, Filter-Tabs, Teaser, Produkte-Hero.
    ========================================================================== */
+
+/* --------------------------------------------------------------------------
+   0. Produkte-Seite Hero
+   -------------------------------------------------------------------------- */
+.produkte-hero {
+  padding: var(--space-8) 0 var(--space-4);
+  background-color: var(--color-dark);
+  color: var(--color-white);
+}
+
+.produkte-hero .section__label {
+  color: var(--color-primary);
+}
+
+.produkte-hero__title {
+  font-family: var(--font-heading);
+  font-size: clamp(2rem, 5vw, 3.5rem);
+  font-weight: 900;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  line-height: 1.1;
+  margin: var(--space-1) 0;
+}
+
+.produkte-hero__subtitle {
+  color: rgba(255,255,255,0.7);
+  font-size: var(--text-lg);
+  max-width: 56ch;
+}
+
+/* --------------------------------------------------------------------------
+   0b. Filter-Tabs
+   -------------------------------------------------------------------------- */
+.filter-tabs {
+  display: flex;
+  gap: var(--space-2);
+  flex-wrap: wrap;
+  margin-bottom: var(--space-6);
+  padding-bottom: var(--space-3);
+  border-bottom: 2px solid var(--color-gray-light);
+}
+
+.filter-tab {
+  font-family: var(--font-heading);
+  font-size: var(--text-sm);
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  padding: var(--space-1) var(--space-3);
+  border: 2px solid var(--color-gray-light);
+  border-radius: 999px;
+  background: transparent;
+  color: var(--color-gray);
+  cursor: pointer;
+  transition: all var(--transition);
+}
+
+.filter-tab:hover {
+  border-color: var(--color-dark);
+  color: var(--color-dark);
+}
+
+.filter-tab--active {
+  background-color: var(--color-dark);
+  border-color: var(--color-dark);
+  color: var(--color-white);
+}
+
+/* --------------------------------------------------------------------------
+   0c. Teaser-Mehr-Button + Ladezustand
+   -------------------------------------------------------------------------- */
+.produkte__mehr {
+  margin-top: var(--space-6);
+  text-align: center;
+}
+
+.produkte__laden {
+  color: var(--color-gray);
+  font-style: italic;
+  padding: var(--space-8) 0;
+  text-align: center;
+}
+
+.produkte__leer {
+  color: var(--color-gray);
+  padding: var(--space-6) 0;
+  text-align: center;
+}
+
+/* Teaser-Grid: max. 3 Spalten, aber zentriert wenn weniger */
+.produkte__grid--teaser {
+  max-width: 900px;
+}
 
 /* --------------------------------------------------------------------------
    1. Abschnitt-Titel für Produkt-Listings
