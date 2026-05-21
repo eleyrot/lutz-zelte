@@ -44,12 +44,6 @@ export default {
       },
     },
     {
-      name:        'groesse_m',
-      title:       'Grösse (Anzeige-Text)',
-      type:        'string',
-      description: 'Anzeige auf Website, z.B. «3 × 3 m» — wird automatisch aus Breite/Länge generiert wenn leer',
-    },
-    {
       name:        'groesse_b_m',
       title:       'Breite (m)',
       type:        'number',
