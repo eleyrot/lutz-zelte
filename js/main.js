@@ -7,10 +7,12 @@ import { initNav }      from './modules/nav.js';
 import { initContact }  from './modules/contact.js';
 import { initStats }    from './modules/stats.js';
 import { initProducts } from './modules/products.js';
+import { initGallery }  from './modules/gallery.js';
 
 document.addEventListener('DOMContentLoaded', () => {
   initNav();
   initContact();
   initStats();
   initProducts();
+  initGallery();
 });

@@ -53,6 +53,20 @@ export const structure = (S) =>
 
       S.divider(),
 
+      /* -----------------------------------------------------------------------
+         Projekte / Galerie
+         ----------------------------------------------------------------------- */
+      S.listItem()
+        .title('📷 Projekte / Galerie')
+        .child(
+          S.documentList()
+            .title('Projekte')
+            .filter('_type == "projekt"')
+            .defaultOrdering([{ field: 'reihenfolge', direction: 'asc' }])
+        ),
+
+      S.divider(),
+
       /* Alle Zelte — Übersicht für den Admin */
       S.listItem()
         .title('📋 Alle Zelte (Übersicht)')
