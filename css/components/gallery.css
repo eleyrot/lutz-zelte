@@ -132,7 +132,13 @@
 /* --------------------------------------------------------------------------
    7. Lightbox — natives <dialog>
    -------------------------------------------------------------------------- */
-.lightbox {
+/* Geschlossen: unsichtbar */
+.lightbox:not([open]) {
+  display: none;
+}
+
+/* Offen: Vollbild-Overlay */
+.lightbox[open] {
   position: fixed;
   inset: 0;
   margin: auto;
