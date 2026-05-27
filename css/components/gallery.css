@@ -215,3 +215,160 @@
 
 .lightbox__prev { order: -1; }
 .lightbox__next { order:  1; }
+
+/* --------------------------------------------------------------------------
+   8. Bildanzahl-Badge auf der Karte (oben rechts)
+   -------------------------------------------------------------------------- */
+.gallery__count-badge {
+  position: absolute;
+  top: var(--space-2);
+  right: var(--space-2);
+  background: rgba(0, 0, 0, 0.65);
+  color: #fff;
+  font-size: 0.7rem;
+  padding: 4px 8px;
+  border-radius: var(--radius-md);
+  font-weight: 600;
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* --------------------------------------------------------------------------
+   9. Projekt-Detail-Overlay (ersetzt Lightbox für Projekte)
+   -------------------------------------------------------------------------- */
+.projekt-detail:not([open]) { display: none; }
+
+.projekt-detail[open] {
+  position: fixed;
+  inset: 0;
+  margin: 0;
+  width: 100%;
+  height: 100%;
+  max-width: 100%;
+  max-height: 100%;
+  border: none;
+  padding: 0;
+  background: rgba(0, 0, 0, 0.92);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+}
+
+.projekt-detail::backdrop { background: rgba(0, 0, 0, 0.85); }
+
+.projekt-detail__inner {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+  max-width: 95vw;
+  max-height: 95vh;
+  width: 100%;
+  padding: var(--space-4);
+  align-items: center;
+}
+
+.projekt-detail__close {
+  position: absolute;
+  top: var(--space-3);
+  right: var(--space-3);
+  background: rgba(255,255,255,0.12);
+  border: none;
+  color: #fff;
+  cursor: pointer;
+  border-radius: 50%;
+  width: 2.5rem;
+  height: 2.5rem;
+  font-size: 1.4rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.2s;
+  z-index: 2;
+}
+
+.projekt-detail__close:hover { background: rgba(255,255,255,0.25); }
+
+.projekt-detail__header { text-align: center; }
+
+.projekt-detail__title {
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin: 0 0 var(--space-2);
+  color: #fff;
+}
+
+.projekt-detail__meta {
+  display: flex;
+  gap: var(--space-3);
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  font-size: var(--text-sm);
+  color: rgba(255,255,255,0.8);
+}
+
+.projekt-detail__kategorie {
+  background: rgba(255,255,255,0.15);
+  padding: 4px 12px;
+  border-radius: var(--radius-md);
+  font-weight: 600;
+}
+
+.projekt-detail__main {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 0;
+  max-height: 65vh;
+}
+
+.projekt-detail__main-img {
+  max-width: 100%;
+  max-height: 65vh;
+  object-fit: contain;
+  border-radius: var(--radius-md);
+  box-shadow: 0 10px 40px rgba(0,0,0,0.5);
+}
+
+.projekt-detail__thumbnails {
+  display: flex;
+  gap: var(--space-2);
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.projekt-detail__thumb {
+  width: 70px;
+  height: 50px;
+  border: 2px solid transparent;
+  border-radius: 4px;
+  padding: 0;
+  background: none;
+  cursor: pointer;
+  overflow: hidden;
+  opacity: 0.6;
+  transition: opacity 0.2s, border-color 0.2s, transform 0.2s;
+}
+
+.projekt-detail__thumb img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.projekt-detail__thumb:hover {
+  opacity: 1;
+  transform: translateY(-2px);
+}
+
+.projekt-detail__thumb.is-active {
+  opacity: 1;
+  border-color: var(--color-primary, #f5c800);
+}
+
+@media (min-width: 768px) {
+  .projekt-detail__thumb { width: 90px; height: 64px; }
+}
