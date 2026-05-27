@@ -18,7 +18,7 @@ export const structure = (S) =>
             .title('Faltzelte Serie 1')
             .filter('_type == "zelt" && serie == "Serie 1"')
             .defaultOrdering([{ field: 'reihenfolge', direction: 'asc' }])
-            .initialValueTemplates([S.initialValueTemplateItem('zelt-serie1')])
+            .initialValueTemplates([S.initialValueTemplateItem({ templateId: 'zelt-serie1' })])
         ),
 
       S.listItem()
@@ -28,7 +28,7 @@ export const structure = (S) =>
             .title('Faltzelte Serie 2')
             .filter('_type == "zelt" && serie == "Serie 2"')
             .defaultOrdering([{ field: 'reihenfolge', direction: 'asc' }])
-            .initialValueTemplates([S.initialValueTemplateItem('zelt-serie2')])
+            .initialValueTemplates([S.initialValueTemplateItem({ templateId: 'zelt-serie2' })])
         ),
 
       S.listItem()
@@ -38,7 +38,7 @@ export const structure = (S) =>
             .title('Occasion-Zelte')
             .filter('_type == "zelt" && kategorie == "occasion"')
             .defaultOrdering([{ field: 'reihenfolge', direction: 'asc' }])
-            .initialValueTemplates([S.initialValueTemplateItem('zelt-occasion')])
+            .initialValueTemplates([S.initialValueTemplateItem({ templateId: 'zelt-occasion' })])
         ),
 
       S.listItem()
@@ -48,7 +48,7 @@ export const structure = (S) =>
             .title('Mietzelte')
             .filter('_type == "zelt" && kategorie == "vermietung"')
             .defaultOrdering([{ field: 'reihenfolge', direction: 'asc' }])
-            .initialValueTemplates([S.initialValueTemplateItem('zelt-vermietung')])
+            .initialValueTemplates([S.initialValueTemplateItem({ templateId: 'zelt-vermietung' })])
         ),
 
       S.divider(),
