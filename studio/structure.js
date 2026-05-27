@@ -1,6 +1,9 @@
 /* ==========================================================================
    structure.js — Lutz Zelte GmbH
-   Zweck: Custom Desk Structure — 4 Ordner im Sanity Studio.
+   Zweck: Custom Desk Structure — 5 Ordner im Sanity Studio.
+   Hinweis: Templates (Serie 1/2, Occasion, Vermietung) sind in
+            sanity.config.js definiert und über die globale «+»-Schaltfläche
+            oben im Studio-Header erreichbar.
    ========================================================================== */
 
 export const structure = (S) =>
@@ -18,9 +21,6 @@ export const structure = (S) =>
             .title('Faltzelte Serie 1')
             .filter('_type == "zelt" && serie == "Serie 1"')
             .defaultOrdering([{ field: 'reihenfolge', direction: 'asc' }])
-            .initialValueTemplates([
-              S.initialValueTemplateItem({ id: 'zelt-serie1', templateId: 'zelt-serie1' }),
-            ])
         ),
 
       S.listItem()
@@ -30,9 +30,6 @@ export const structure = (S) =>
             .title('Faltzelte Serie 2')
             .filter('_type == "zelt" && serie == "Serie 2"')
             .defaultOrdering([{ field: 'reihenfolge', direction: 'asc' }])
-            .initialValueTemplates([
-              S.initialValueTemplateItem({ id: 'zelt-serie2', templateId: 'zelt-serie2' }),
-            ])
         ),
 
       S.listItem()
@@ -42,9 +39,6 @@ export const structure = (S) =>
             .title('Occasion-Zelte')
             .filter('_type == "zelt" && kategorie == "occasion"')
             .defaultOrdering([{ field: 'reihenfolge', direction: 'asc' }])
-            .initialValueTemplates([
-              S.initialValueTemplateItem({ id: 'zelt-occasion', templateId: 'zelt-occasion' }),
-            ])
         ),
 
       S.listItem()
@@ -54,9 +48,6 @@ export const structure = (S) =>
             .title('Mietzelte')
             .filter('_type == "zelt" && kategorie == "vermietung"')
             .defaultOrdering([{ field: 'reihenfolge', direction: 'asc' }])
-            .initialValueTemplates([
-              S.initialValueTemplateItem({ id: 'zelt-vermietung', templateId: 'zelt-vermietung' }),
-            ])
         ),
 
       S.divider(),
