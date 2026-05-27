@@ -4,8 +4,10 @@
    Neues Schema? Hier importieren und in schemaTypes eintragen.
    ========================================================================== */
 
-import zelt from './zelt.js';
+import zelt    from './zelt.js';
+import projekt from './projekt.js';
 
 export const schemaTypes = [
   zelt,
+  projekt,
 ];
