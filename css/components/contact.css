@@ -73,15 +73,60 @@
 }
 
 /* --------------------------------------------------------------------------
-   3. Direktkontakt Info
+   3. Direktkontakt — Grid für 2 Boxen (Verleih + Verkauf)
    -------------------------------------------------------------------------- */
+.contact__info-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-4);
+}
+
+@media (min-width: 540px) {
+  .contact__info-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
 .contact__info {
   font-style: normal;
   display: flex;
   flex-direction: column;
   gap: var(--space-2);
+  padding: var(--space-3);
+  background-color: var(--color-white);
+  border-radius: var(--radius-md, 8px);
+  border-top: 3px solid var(--color-primary);
+  box-shadow: 0 2px 8px rgba(0,0,0,0.04);
 }
 
+/* Akzentfarbe pro Box */
+.contact__info--verleih { border-top-color: var(--color-primary, #f5c800); }
+.contact__info--verkauf { border-top-color: #c2410c; }
+
+.contact__info-label {
+  font-family: var(--font-heading);
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--color-gray);
+  margin: 0 0 4px;
+}
+
+.contact__info-name {
+  font-family: var(--font-heading);
+  font-size: var(--text-lg);
+  color: var(--color-dark);
+  margin: 0;
+}
+
+.contact__placeholder {
+  font-style: italic;
+  color: var(--color-gray);
+  font-size: var(--text-sm);
+}
+
+/* Alte Klasse für Rückwärtskompatibilität (falls noch wo verwendet) */
 .contact__info-title {
   font-family: var(--font-heading);
   font-size: var(--text-xl);
@@ -146,6 +191,6 @@
 
 @media (min-width: 1024px) {
   .contact {
-    grid-template-columns: 3fr 2fr;
+    grid-template-columns: 1fr 1fr;
   }
 }
