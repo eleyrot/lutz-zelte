@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<!--
+  verkauf.html — Lutz Zelte GmbH
+  Zweck: Verkaufs-Bereich. Kategorien-Übersicht + Filter-Tabs für alle
+         Verkaufs-Zelte (Serie 1, Serie 2, Occasion).
+-->
+<html lang="de">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Zeltverkauf bei Lutz Zelte – ProfiLine Faltzelte Serie 1 & 2, Occasionen. Direkt anfragen, faire Preise, Schweizer Qualität." />
+
+  <title>Zeltverkauf – Lutz Zelte | ProfiLine Faltzelte Schweiz</title>
+
+  <!-- Stylesheets -->
+  <link rel="stylesheet" href="css/base.css" />
+  <link rel="stylesheet" href="css/components/header.css" />
+  <link rel="stylesheet" href="css/components/footer.css" />
+  <link rel="stylesheet" href="css/components/cards.css" />
+  <link rel="stylesheet" href="css/components/products.css" />
+  <link rel="stylesheet" href="css/components/produkte-seite.css" />
+</head>
+<body>
+
+  <!-- =====================================================================
+       HEADER
+       ===================================================================== -->
+  <header class="header" id="top">
+    <div class="container header__inner">
+
+      <a href="index.html" class="header__logo" aria-label="Lutz Zelte – zur Startseite">
+        <img src="assets/images/logos/lutz-zelte-logo.png" alt="ProfiLine – Lutz Zelte Altenrhein" width="180" height="60" />
+      </a>
+
+      <button class="header__menu-toggle" aria-label="Navigation öffnen" aria-expanded="false" aria-controls="main-nav">
+        <span></span><span></span><span></span>
+      </button>
+
+      <nav class="nav" id="main-nav" aria-label="Hauptnavigation">
+        <ul class="nav__list">
+          <li><a class="nav__link" href="verleih.html">Verleih</a></li>
+          <li><a class="nav__link nav__link--active" href="verkauf.html">Verkauf</a></li>
+          <li><a class="nav__link" href="index.html#galerie">Galerie</a></li>
+          <li><a class="nav__link" href="index.html#ueber-uns">Über uns</a></li>
+          <li><a class="nav__link nav__link--cta" href="index.html#kontakt">Kontakt</a></li>
+        </ul>
+      </nav>
+
+    </div>
+  </header>
+
+  <main>
+
+    <!-- ===================================================================
+         SEITEN-HEADER
+         =================================================================== -->
+    <section class="produkte-hero">
+      <div class="container">
+        <h1 class="produkte-hero__title">Zeltverkauf.</h1>
+        <p class="produkte-hero__subtitle">Faltzelte und Occasionen – direkt anfragbar. Alle Preise exkl. MwSt.</p>
+      </div>
+    </section>
+
+    <!-- ===================================================================
+         KATEGORIEN-ÜBERSICHT
+         =================================================================== -->
+    <section class="section" aria-labelledby="kategorien-title">
+      <div class="container">
+        <header class="section__header">
+          <span class="section__label">ProfiLine Sortiment</span>
+          <h2 class="section__title" id="kategorien-title">Qualität, die bleibt.</h2>
+          <p class="section__subtitle">Unsere eigene ProfiLine-Marke – einfache Handhabung, blitzschneller Aufbau, Top-Qualität zu fairen Preisen.</p>
+        </header>
+
+        <div class="cards">
+          <article class="card">
+            <h3 class="card__title">Faltzelte</h3>
+            <p class="card__text">Die absolute Nr. 1 – robust, schnell aufgebaut, alle Ersatzteile lagernd.</p>
+          </article>
+          <article class="card">
+            <h3 class="card__title">Lagerzelte</h3>
+            <p class="card__text">Für Industrie, Gewerbe und Landwirtschaft – winterfest und langlebig.</p>
+          </article>
+          <article class="card">
+            <h3 class="card__title">VIP & Partyzelte</h3>
+            <p class="card__text">Exklusive Zeltsysteme für den gehobenen Eventbereich.</p>
+          </article>
+          <article class="card">
+            <h3 class="card__title">Carports & Iglus</h3>
+            <p class="card__text">Flexible Überdachungen für Fahrzeuge und Aussenbereiche.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================================================================
+         FILTER-TABS + PRODUKT-GRID
+         =================================================================== -->
+    <section class="section section--alt" aria-labelledby="produkte-title">
+      <div class="container">
+        <header class="section__header">
+          <span class="section__label">Alle Verkaufs-Zelte</span>
+          <h2 class="section__title" id="produkte-title">Aus dem Lager.</h2>
+        </header>
+
+        <div class="filter-tabs" id="produkte-tabs" role="tablist" aria-label="Produkte filtern">
+          <!-- Tabs werden per JS eingefügt -->
+        </div>
+
+        <div id="produkte-alle" aria-live="polite">
+          <p class="produkte__laden">Zelte werden geladen…</p>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- =====================================================================
+       FOOTER
+       ===================================================================== -->
+  <footer class="footer" aria-label="Seitenfuss">
+    <div class="container footer__inner">
+      <p class="footer__copy">&copy; 2025 Lutz Zelte GmbH · Altenrhein · <a href="impressum.html">Impressum</a> · <a href="datenschutz.html">Datenschutz</a></p>
+    </div>
+  </footer>
+
+  <script src="js/main.js" type="module" defer></script>
+
+</body>
+</html>
