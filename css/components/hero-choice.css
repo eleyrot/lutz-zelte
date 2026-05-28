@@ -5,13 +5,20 @@
    ========================================================================== */
 
 /* --------------------------------------------------------------------------
+   0. Sektion-Wrapper — kompaktes Top-Padding (direkt nach Hero)
+   -------------------------------------------------------------------------- */
+.choice {
+  padding-top: var(--space-4);
+  padding-bottom: var(--space-6);
+}
+
+/* --------------------------------------------------------------------------
    1. Grid — Mobile First
    -------------------------------------------------------------------------- */
 .hero__choice-grid {
   display: grid;
   grid-template-columns: 1fr;
   gap: var(--space-3);
-  margin-top: var(--space-5);
 }
 
 @media (min-width: 768px) {
@@ -22,14 +29,14 @@
 }
 
 /* --------------------------------------------------------------------------
-   2. Einzelne Kachel
+   2. Einzelne Kachel — kompaktere Höhe
    -------------------------------------------------------------------------- */
 .hero__choice-card {
   position: relative;
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
-  min-height: 280px;
+  min-height: 160px;
   border-radius: var(--radius-lg, 12px);
   overflow: hidden;
   text-decoration: none;
@@ -38,14 +45,14 @@
   background-size: cover;
   background-position: center;
   transition: transform 0.35s ease, box-shadow 0.35s ease;
-  box-shadow: 0 6px 24px rgba(0,0,0,0.12);
+  box-shadow: 0 4px 16px rgba(0,0,0,0.10);
   cursor: pointer;
   isolation: isolate;
 }
 
 @media (min-width: 768px) {
   .hero__choice-card {
-    min-height: 380px;
+    min-height: 220px;
   }
 }
 
@@ -92,10 +99,10 @@
 .hero__choice-card__content {
   position: relative;
   z-index: 2;
-  padding: var(--space-4);
+  padding: var(--space-3) var(--space-4);
   display: flex;
   flex-direction: column;
-  gap: var(--space-2);
+  gap: 4px;
 }
 
 .hero__choice-card__label {
@@ -108,7 +115,7 @@
 }
 
 .hero__choice-card__title {
-  font-size: 2rem;
+  font-size: 1.5rem;
   font-weight: 800;
   margin: 0;
   line-height: 1.1;
@@ -117,7 +124,7 @@
 
 @media (min-width: 768px) {
   .hero__choice-card__title {
-    font-size: 2.5rem;
+    font-size: 1.9rem;
   }
 }
 
@@ -133,7 +140,7 @@
   display: inline-flex;
   align-items: center;
   gap: 6px;
-  margin-top: var(--space-2);
+  margin-top: 6px;
   font-weight: 600;
   font-size: var(--text-sm, 0.95rem);
   color: var(--color-primary, #f5c800);
