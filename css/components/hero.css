@@ -36,26 +36,19 @@
 }
 
 /* --------------------------------------------------------------------------
-   2. Zähler-Streifen — direkt unter der Nav, kompakter Abstand
-   -------------------------------------------------------------------------- */
-.hero__stats {
-  position: relative;
-  z-index: 1;
-  padding: var(--space-2) 0;
-}
-
-/* --------------------------------------------------------------------------
-   3. Hero Inhalt — zentriert, mit komfortablem aber nicht übermässigem Padding
+   2. Hero Inhalt — zentriert, mit komfortablem aber nicht übermässigem Padding
    -------------------------------------------------------------------------- */
 .hero__inner {
   flex: 1;
   display: flex;
-  align-items: center;
-  padding-block: var(--space-6) var(--space-12);
+  flex-direction: column;
+  justify-content: center;
+  padding-block: var(--space-6) var(--space-8);
 }
 
 .hero__content {
-  max-width: 640px;
+  max-width: 720px;
+  margin-bottom: var(--space-2);
 }
 
 /* --------------------------------------------------------------------------
@@ -94,13 +87,6 @@
   max-width: 500px;
 }
 
-.hero__actions {
-  display: flex;
-  flex-wrap: wrap;
-  gap: var(--space-2);
-  padding-bottom: var(--space-4);
-}
-
 /* --------------------------------------------------------------------------
    5. Desktop
    -------------------------------------------------------------------------- */
@@ -111,10 +97,6 @@
 
   .hero__subtitle {
     font-size: var(--text-lg);
-  }
-
-  .hero__actions {
-    flex-wrap: nowrap;
   }
 
   .hero__inner {

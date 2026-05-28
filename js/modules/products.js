@@ -154,25 +154,30 @@ function initTeaser(alle) {
       ${zelte.map(renderKarte).join('')}
     </div>
     <div class="produkte__mehr">
-      <a class="btn btn--outline" href="produkte.html">Alle Zelte ansehen →</a>
+      <a class="btn btn--outline" href="verkauf.html">Alle Zelte ansehen →</a>
     </div>`;
 }
 
 /* --------------------------------------------------------------------------
-   PRODUKTE-SEITE — alle Zelte mit Filter-Tabs
+   VERKAUFS-SEITE — alle Verkaufs-Zelte (Vermietung ausgeschlossen)
    -------------------------------------------------------------------------- */
 function initProduktSeite(alle) {
   const container = document.getElementById('produkte-alle');
   const tabsEl    = document.getElementById('produkte-tabs');
   if (!container || !tabsEl) return;
 
+  /* Nur Verkaufs-Zelte (Mietzelte sind auf verleih.html) */
+  const verkaufsZelte = alle.filter(p => p.kategorie !== 'vermietung');
+
   const tabs = [
-    { id: 'alle',       label: 'Alle',       filter: () => true },
-    { id: 'serie1',     label: 'Serie 1',    filter: p => p.serie === 'Serie 1' },
-    { id: 'serie2',     label: 'Serie 2',    filter: p => p.serie === 'Serie 2' },
-    { id: 'occasion',   label: 'Occasion',   filter: p => p.kategorie === 'occasion' },
-    { id: 'vermietung', label: 'Vermietung', filter: p => p.kategorie === 'vermietung' },
+    { id: 'alle',     label: 'Alle',     filter: () => true },
+    { id: 'serie1',   label: 'Serie 1',  filter: p => p.serie === 'Serie 1' },
+    { id: 'serie2',   label: 'Serie 2',  filter: p => p.serie === 'Serie 2' },
+    { id: 'occasion', label: 'Occasion', filter: p => p.kategorie === 'occasion' },
   ];
+
+  /* Damit der Rest mit "alle" weiterarbeitet, ohne Vermietung */
+  alle = verkaufsZelte;
 
   /* Tabs rendern — nur Tabs mit Einträgen anzeigen */
   const sichtbareTabs = tabs.filter(t => alle.some(t.filter));
@@ -214,6 +219,23 @@ function initProduktSeite(alle) {
 }
 
 /* --------------------------------------------------------------------------
+   VERLEIH-SEITE — nur Mietzelte (kategorie == 'vermietung')
+   -------------------------------------------------------------------------- */
+function initVerleihSeite(alle) {
+  const container = document.getElementById('mietzelte-alle');
+  if (!container) return;
+
+  const mietzelte = alle.filter(p => p.kategorie === 'vermietung');
+
+  if (!mietzelte.length) {
+    container.innerHTML = '<p class="produkte__leer">Aktuell sind alle Mietzelte ausgebucht. Kontaktieren Sie uns gerne für Ihre Anfrage.</p>';
+    return;
+  }
+
+  container.innerHTML = `<div class="produkte__grid">${mietzelte.map(renderKarte).join('')}</div>`;
+}
+
+/* --------------------------------------------------------------------------
    Hauptfunktion — lädt Daten, entscheidet Modus
    -------------------------------------------------------------------------- */
 export async function initProducts() {
@@ -228,7 +250,8 @@ export async function initProducts() {
     return;
   }
 
-  /* Modus bestimmen */
-  if (document.getElementById('produkte-teaser'))   initTeaser(alle);
-  if (document.getElementById('produkte-alle'))     initProduktSeite(alle);
+  /* Modus bestimmen — je nach DOM-Container */
+  if (document.getElementById('produkte-teaser')) initTeaser(alle);
+  if (document.getElementById('produkte-alle'))   initProduktSeite(alle);
+  if (document.getElementById('mietzelte-alle'))  initVerleihSeite(alle);
 }

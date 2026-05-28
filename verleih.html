@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<!--
+  verleih.html — Lutz Zelte GmbH
+  Zweck: Zeltverleih-Bereich. Service-Übersicht + Mietzelt-Liste aus Sanity.
+-->
+<html lang="de">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Zeltverleih in der Schweiz – Festzelte, Partyzelte und Eventzelte für jede Grösse. Aufbau, Abbau und Komplett-Service. Jetzt anfragen." />
+
+  <title>Zeltverleih – Lutz Zelte | Festzelte & Eventzelte Schweiz</title>
+
+  <!-- Stylesheets -->
+  <link rel="stylesheet" href="css/base.css" />
+  <link rel="stylesheet" href="css/components/header.css" />
+  <link rel="stylesheet" href="css/components/footer.css" />
+  <link rel="stylesheet" href="css/components/cards.css" />
+  <link rel="stylesheet" href="css/components/products.css" />
+  <link rel="stylesheet" href="css/components/produkte-seite.css" />
+</head>
+<body>
+
+  <!-- =====================================================================
+       HEADER
+       ===================================================================== -->
+  <header class="header" id="top">
+    <div class="container header__inner">
+
+      <a href="index.html" class="header__logo" aria-label="Lutz Zelte – zur Startseite">
+        <img src="assets/images/logos/lutz-zelte-logo.png" alt="ProfiLine – Lutz Zelte Altenrhein" width="180" height="60" />
+      </a>
+
+      <button class="header__menu-toggle" aria-label="Navigation öffnen" aria-expanded="false" aria-controls="main-nav">
+        <span></span><span></span><span></span>
+      </button>
+
+      <nav class="nav" id="main-nav" aria-label="Hauptnavigation">
+        <ul class="nav__list">
+          <li><a class="nav__link nav__link--active" href="verleih.html">Verleih</a></li>
+          <li><a class="nav__link" href="verkauf.html">Verkauf</a></li>
+          <li><a class="nav__link" href="index.html#galerie">Galerie</a></li>
+          <li><a class="nav__link" href="index.html#ueber-uns">Über uns</a></li>
+          <li><a class="nav__link nav__link--cta" href="index.html#kontakt">Kontakt</a></li>
+        </ul>
+      </nav>
+
+    </div>
+  </header>
+
+  <main>
+
+    <!-- ===================================================================
+         SEITEN-HEADER
+         =================================================================== -->
+    <section class="produkte-hero">
+      <div class="container">
+        <h1 class="produkte-hero__title">Zeltverleih.</h1>
+        <p class="produkte-hero__subtitle">Festzelte für jede Grösse – inklusive Aufbau, Abbau und Komplett-Service.</p>
+      </div>
+    </section>
+
+    <!-- ===================================================================
+         SERVICE-ÜBERSICHT
+         =================================================================== -->
+    <section class="section" aria-labelledby="services-title">
+      <div class="container">
+        <header class="section__header">
+          <span class="section__label">Zeltverleih</span>
+          <h2 class="section__title" id="services-title">Ihr Event. Unser Zelt.</h2>
+          <p class="section__subtitle">Wir vermieten Festzelte für jede Grösse – inklusive Aufbau, Abbau und gesamter Ausstattung.</p>
+        </header>
+
+        <div class="cards">
+          <article class="card">
+            <div class="card__icon" aria-hidden="true">⛺</div>
+            <h3 class="card__title">Partyzelte</h3>
+            <p class="card__text">Für Geburtstage, Hochzeiten und private Feiern ab 10 Personen.</p>
+          </article>
+          <article class="card">
+            <div class="card__icon" aria-hidden="true">🏟️</div>
+            <h3 class="card__title">Event & Festival</h3>
+            <p class="card__text">Grosse Veranstaltungen mit kompletter Bühne, Bar und Beleuchtung.</p>
+          </article>
+          <article class="card">
+            <div class="card__icon" aria-hidden="true">🏢</div>
+            <h3 class="card__title">Firmenevent</h3>
+            <p class="card__text">Professionelle Zeltsysteme für Produktionspausen, Messen und Jubiläen.</p>
+          </article>
+          <article class="card">
+            <div class="card__icon" aria-hidden="true">🛋️</div>
+            <h3 class="card__title">Vollausstattung</h3>
+            <p class="card__text">Heizung, Böden, Tische, Stühle, Teppich, Beleuchtung – alles aus einer Hand.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================================================================
+         MIETZELTE AUS SANITY
+         =================================================================== -->
+    <section class="section section--alt" aria-labelledby="mietzelte-title">
+      <div class="container">
+        <header class="section__header">
+          <span class="section__label">Verfügbare Mietzelte</span>
+          <h2 class="section__title" id="mietzelte-title">Aus unserem Fuhrpark.</h2>
+          <p class="section__subtitle">Diese Zelte können Sie aktuell mieten. Preise pro Tag, alle exkl. MwSt.</p>
+        </header>
+
+        <div id="mietzelte-alle" aria-live="polite">
+          <p class="produkte__laden">Mietzelte werden geladen…</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================================================================
+         CTA-SEKTION
+         =================================================================== -->
+    <section class="section" aria-labelledby="cta-title">
+      <div class="container" style="text-align:center;">
+        <h2 class="section__title" id="cta-title">Bereit für Ihr Event?</h2>
+        <p class="section__subtitle">Wir beraten Sie unverbindlich und finden das passende Zelt für Ihren Anlass.</p>
+        <a class="btn btn--primary" href="index.html#kontakt" style="margin-top:1rem;">Jetzt anfragen</a>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- =====================================================================
+       FOOTER
+       ===================================================================== -->
+  <footer class="footer" aria-label="Seitenfuss">
+    <div class="container footer__inner">
+      <p class="footer__copy">&copy; 2025 Lutz Zelte GmbH · Altenrhein · <a href="impressum.html">Impressum</a> · <a href="datenschutz.html">Datenschutz</a></p>
+    </div>
+  </footer>
+
+  <script src="js/main.js" type="module" defer></script>
+
+</body>
+</html>

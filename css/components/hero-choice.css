@@ -1,0 +1,164 @@
+/* ==========================================================================
+   hero-choice.css — Lutz Zelte GmbH
+   Zweck: Zwei grosse Bildkacheln im Hero — Verleih / Verkauf.
+   Mobile First: untereinander. Ab 768px: nebeneinander.
+   ========================================================================== */
+
+/* --------------------------------------------------------------------------
+   1. Grid — Mobile First
+   -------------------------------------------------------------------------- */
+.hero__choice-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-3);
+  margin-top: var(--space-5);
+}
+
+@media (min-width: 768px) {
+  .hero__choice-grid {
+    grid-template-columns: 1fr 1fr;
+    gap: var(--space-4);
+  }
+}
+
+/* --------------------------------------------------------------------------
+   2. Einzelne Kachel
+   -------------------------------------------------------------------------- */
+.hero__choice-card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  min-height: 280px;
+  border-radius: var(--radius-lg, 12px);
+  overflow: hidden;
+  text-decoration: none;
+  color: #fff;
+  background-color: var(--color-gray-light, #e5e5e5);
+  background-size: cover;
+  background-position: center;
+  transition: transform 0.35s ease, box-shadow 0.35s ease;
+  box-shadow: 0 6px 24px rgba(0,0,0,0.12);
+  cursor: pointer;
+  isolation: isolate;
+}
+
+@media (min-width: 768px) {
+  .hero__choice-card {
+    min-height: 380px;
+  }
+}
+
+.hero__choice-card:hover,
+.hero__choice-card:focus-visible {
+  transform: translateY(-4px);
+  box-shadow: 0 16px 36px rgba(0,0,0,0.25);
+}
+
+.hero__choice-card:focus-visible {
+  outline: 3px solid var(--color-primary, #f5c800);
+  outline-offset: 3px;
+}
+
+/* --------------------------------------------------------------------------
+   3. Dunkler Gradient für Lesbarkeit
+   -------------------------------------------------------------------------- */
+.hero__choice-card::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    180deg,
+    rgba(0,0,0,0.15) 0%,
+    rgba(0,0,0,0.55) 60%,
+    rgba(0,0,0,0.85) 100%
+  );
+  z-index: 1;
+  transition: opacity 0.3s ease;
+}
+
+.hero__choice-card:hover::before {
+  background: linear-gradient(
+    180deg,
+    rgba(0,0,0,0.10) 0%,
+    rgba(0,0,0,0.50) 60%,
+    rgba(0,0,0,0.80) 100%
+  );
+}
+
+/* --------------------------------------------------------------------------
+   4. Inhalt (Label, Titel, Text, Pfeil)
+   -------------------------------------------------------------------------- */
+.hero__choice-card__content {
+  position: relative;
+  z-index: 2;
+  padding: var(--space-4);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+
+.hero__choice-card__label {
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--color-primary, #f5c800);
+  margin: 0;
+}
+
+.hero__choice-card__title {
+  font-size: 2rem;
+  font-weight: 800;
+  margin: 0;
+  line-height: 1.1;
+  color: #fff;
+}
+
+@media (min-width: 768px) {
+  .hero__choice-card__title {
+    font-size: 2.5rem;
+  }
+}
+
+.hero__choice-card__text {
+  font-size: var(--text-sm, 0.95rem);
+  margin: 0;
+  color: rgba(255,255,255,0.92);
+  line-height: 1.4;
+  max-width: 26em;
+}
+
+.hero__choice-card__arrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  margin-top: var(--space-2);
+  font-weight: 600;
+  font-size: var(--text-sm, 0.95rem);
+  color: var(--color-primary, #f5c800);
+  transition: transform 0.3s ease;
+}
+
+.hero__choice-card:hover .hero__choice-card__arrow {
+  transform: translateX(4px);
+}
+
+/* --------------------------------------------------------------------------
+   5. Platzhalter-Hintergründe (bis echte Fotos vorhanden)
+   -------------------------------------------------------------------------- */
+.hero__choice-card--verleih {
+  background-image: linear-gradient(135deg, #1f2937 0%, #4b5563 100%),
+                    url('../../assets/images/hero/verleih.jpg');
+}
+
+.hero__choice-card--verkauf {
+  background-image: linear-gradient(135deg, #7c2d12 0%, #c2410c 100%),
+                    url('../../assets/images/hero/verkauf.jpg');
+}
+
+/* Wenn Bilder vorhanden → ohne Gradient-Fallback */
+.hero__choice-card--verleih[data-has-image="true"],
+.hero__choice-card--verkauf[data-has-image="true"] {
+  background-image: none;
+}

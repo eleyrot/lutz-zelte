@@ -16,15 +16,13 @@
   <link rel="stylesheet" href="css/base.css" />
   <link rel="stylesheet" href="css/components/header.css" />
   <link rel="stylesheet" href="css/components/hero.css" />
+  <link rel="stylesheet" href="css/components/hero-choice.css" />
   <link rel="stylesheet" href="css/components/cards.css" />
   <link rel="stylesheet" href="css/components/gallery.css" />
   <link rel="stylesheet" href="css/components/contact.css" />
-  <link rel="stylesheet" href="css/components/stats.css" />
   <link rel="stylesheet" href="css/components/referenzen.css" />
   <link rel="stylesheet" href="css/components/team.css" />
   <link rel="stylesheet" href="css/components/footer.css" />
-  <link rel="stylesheet" href="css/components/products.css" />
-  <link rel="stylesheet" href="css/components/produkte-seite.css" />
 </head>
 <body>
 
@@ -44,8 +42,8 @@
 
       <nav class="nav" id="main-nav" aria-label="Hauptnavigation">
         <ul class="nav__list">
-          <li><a class="nav__link" href="#verleih">Verleih</a></li>
-          <li><a class="nav__link" href="produkte.html">Produkte</a></li>
+          <li><a class="nav__link" href="verleih.html">Verleih</a></li>
+          <li><a class="nav__link" href="verkauf.html">Verkauf</a></li>
           <li><a class="nav__link" href="#galerie">Galerie</a></li>
           <li><a class="nav__link" href="#ueber-uns">Über uns</a></li>
           <li><a class="nav__link nav__link--cta" href="#kontakt">Kontakt</a></li>
@@ -58,116 +56,37 @@
   <main>
 
     <!-- ===================================================================
-         HERO — Einstieg, Slogan, primärer Call-to-Action
+         HERO — Einstieg + 2 grosse Bildkacheln (Verleih / Verkauf)
          =================================================================== -->
     <section class="hero" aria-label="Willkommen bei Lutz Zelte">
-
-      <!-- Stats — direkt unter der Kopfzeile, vor dem Hauptinhalt -->
-      <div class="hero__stats" aria-label="Unsere Zahlen">
-        <div class="container stats__grid">
-          <div class="stats__item">
-            <strong class="stats__number" data-target="6270" data-suffix="">0</strong>
-            <span class="stats__label">Zelte gebaut</span>
-          </div>
-          <div class="stats__item">
-            <strong class="stats__number" data-target="8386" data-suffix="">0</strong>
-            <span class="stats__label">Klienten</span>
-          </div>
-          <div class="stats__item">
-            <strong class="stats__number" data-target="321" data-suffix="">0</strong>
-            <span class="stats__label">Ab Lager</span>
-          </div>
-          <div class="stats__item">
-            <strong class="stats__number" data-target="1" data-prefix="Nr. " data-suffix="">0</strong>
-            <span class="stats__label">Faltzelte Schweiz</span>
-          </div>
-        </div>
-      </div>
-
       <div class="container hero__inner">
         <div class="hero__content">
           <p class="hero__label">Verleih & Verkauf · Seit 1999</p>
           <h1 class="hero__title">Die Nr. 1 für Zelte<br>in der Schweiz.</h1>
           <p class="hero__subtitle">Von der Firmenfeier bis zum Grossevent – wir liefern, montieren und betreuen. Schnell, zuverlässig, fair.</p>
-          <div class="hero__actions">
-            <a class="btn btn--primary" href="#kontakt">Jetzt anfragen</a>
-            <a class="btn btn--outline" href="produkte.html">Angebot entdecken</a>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- ===================================================================
-         VERLEIH — Zeltverleih Leistungen
-         =================================================================== -->
-    <section class="section section--alt" id="verleih" aria-labelledby="verleih-title">
-      <div class="container">
-        <header class="section__header">
-          <span class="section__label">Zeltverleih</span>
-          <h2 class="section__title" id="verleih-title">Ihr Event. Unser Zelt.</h2>
-          <p class="section__subtitle">Wir vermieten Festzelte für jede Grösse – inklusive Aufbau, Abbau und gesamter Ausstattung.</p>
-        </header>
-
-        <div class="cards">
-          <article class="card">
-            <div class="card__icon" aria-hidden="true">⛺</div>
-            <h3 class="card__title">Partyzelte</h3>
-            <p class="card__text">Für Geburtstage, Hochzeiten und private Feiern ab 10 Personen.</p>
-          </article>
-          <article class="card">
-            <div class="card__icon" aria-hidden="true">🏟️</div>
-            <h3 class="card__title">Event & Festival</h3>
-            <p class="card__text">Grosse Veranstaltungen mit kompletter Bühne, Bar und Beleuchtung.</p>
-          </article>
-          <article class="card">
-            <div class="card__icon" aria-hidden="true">🏢</div>
-            <h3 class="card__title">Firmenevent</h3>
-            <p class="card__text">Professionelle Zeltsysteme für Produktionspausen, Messen und Jubiläen.</p>
-          </article>
-          <article class="card">
-            <div class="card__icon" aria-hidden="true">🛋️</div>
-            <h3 class="card__title">Vollausstattung</h3>
-            <p class="card__text">Heizung, Böden, Tische, Stühle, Teppich, Beleuchtung – alles aus einer Hand.</p>
-          </article>
         </div>
 
-      </div>
-    </section>
+        <div class="hero__choice-grid">
 
-    <!-- ===================================================================
-         PRODUKTE — Highlight-Teaser (max. 3 Zelte aus Sanity)
-         =================================================================== -->
-    <section class="section" id="verkauf" aria-labelledby="verkauf-title">
-      <div class="container">
-        <header class="section__header">
-          <span class="section__label">ProfiLine Zeltverkauf</span>
-          <h2 class="section__title" id="verkauf-title">Qualität, die bleibt.</h2>
-          <p class="section__subtitle">Unsere eigene ProfiLine-Marke – einfache Handhabung, Blitzschneller Aufbau, Top-Qualität zu fairen Preisen.</p>
-        </header>
+          <a class="hero__choice-card hero__choice-card--verleih" href="verleih.html" aria-label="Zum Zeltverleih">
+            <div class="hero__choice-card__content">
+              <p class="hero__choice-card__label">Mieten</p>
+              <h2 class="hero__choice-card__title">Verleih</h2>
+              <p class="hero__choice-card__text">Festzelte, Partyzelte und Eventzelte – inklusive Aufbau, Abbau und Komplett-Service.</p>
+              <span class="hero__choice-card__arrow">Zum Verleih →</span>
+            </div>
+          </a>
 
-        <div class="cards">
-          <article class="card">
-            <h3 class="card__title">Faltzelte</h3>
-            <p class="card__text">Die absolute Nr. 1 – robust, schnell aufgebaut, alle Ersatzteile lagernd.</p>
-          </article>
-          <article class="card">
-            <h3 class="card__title">Lagerzelte</h3>
-            <p class="card__text">Für Industrie, Gewerbe und Landwirtschaft – winterfest und langlebig.</p>
-          </article>
-          <article class="card">
-            <h3 class="card__title">VIP & Partyzelte</h3>
-            <p class="card__text">Exklusive Zeltsysteme für den gehobenen Eventbereich.</p>
-          </article>
-          <article class="card">
-            <h3 class="card__title">Carports & Iglus</h3>
-            <p class="card__text">Flexible Überdachungen für Fahrzeuge und Aussenbereiche.</p>
-          </article>
+          <a class="hero__choice-card hero__choice-card--verkauf" href="verkauf.html" aria-label="Zum Zeltverkauf">
+            <div class="hero__choice-card__content">
+              <p class="hero__choice-card__label">Kaufen</p>
+              <h2 class="hero__choice-card__title">Verkauf</h2>
+              <p class="hero__choice-card__text">ProfiLine Faltzelte Serie 1 & 2, Lagerzelte und attraktive Occasionen.</p>
+              <span class="hero__choice-card__arrow">Zum Verkauf →</span>
+            </div>
+          </a>
+
         </div>
-
-        <!-- Dynamische Highlight-Zelte (Teaser) aus Sanity -->
-        <h3 class="produkte__section-title">Ausgewählte Produkte</h3>
-        <div id="produkte-teaser" hidden></div>
-
       </div>
     </section>
 
