@@ -43,12 +43,11 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
-  padding-block: var(--space-6) var(--space-8);
+  padding-block: var(--space-8);
 }
 
 .hero__content {
   max-width: 720px;
-  margin-bottom: var(--space-2);
 }
 
 /* --------------------------------------------------------------------------
@@ -83,7 +82,7 @@
   font-size: var(--text-base);
   color: rgba(255, 255, 255, 0.82);
   line-height: 1.65;
-  margin-bottom: var(--space-4);
+  margin-bottom: 0;
   max-width: 500px;
 }
 
@@ -100,7 +99,7 @@
   }
 
   .hero__inner {
-    padding-block: var(--space-8) var(--space-10);
+    padding-block: var(--space-10);
   }
 }
 

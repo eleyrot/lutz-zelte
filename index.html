@@ -185,7 +185,7 @@
         <header class="section__header">
           <span class="section__label">Über uns</span>
           <h2 class="section__title" id="ueber-uns-title">Seit 1999 für Sie da.</h2>
-          <p class="section__subtitle">Gegründet in Goldach, heute in Altenrhein – mit 6 Mitarbeitenden und über 25 Jahren Erfahrung.</p>
+          <p class="section__subtitle">Gegründet in Goldach, heute in Altenrhein – ein eingespieltes Team mit über 25 Jahren Erfahrung.</p>
         </header>
 
         <div class="usps">
@@ -207,10 +207,21 @@
           </div>
         </div>
 
-        <!-- Team — Bild in assets/images/team/ ablegen, Dateiname unten eintragen -->
+        <!-- Team — Foto-Dateien in assets/images/team/ ablegen -->
         <div class="team">
           <h3 class="team__title">Unser Team</h3>
           <div class="team__grid">
+
+            <article class="team-card">
+              <div class="team-card__photo">
+                <!-- Foto: assets/images/team/stefan-lutz.jpg -->
+                <img src="assets/images/team/stefan-lutz.jpg" alt="Stefan Lutz" onerror="this.closest('.team-card__photo').classList.add('team-card__photo--empty')" />
+              </div>
+              <div class="team-card__info">
+                <p class="team-card__name">Stefan Lutz</p>
+                <p class="team-card__role">Inhaber &amp; Verkauf</p>
+              </div>
+            </article>
 
             <article class="team-card">
               <div class="team-card__photo">
@@ -219,40 +230,18 @@
               </div>
               <div class="team-card__info">
                 <p class="team-card__name">Andreas Inauen</p>
-                <p class="team-card__role">Geschäftsführer</p>
+                <p class="team-card__role">Verleih</p>
               </div>
             </article>
 
             <article class="team-card">
               <div class="team-card__photo">
-                <!-- Foto: assets/images/team/person2.jpg -->
-                <img src="assets/images/team/person2.jpg" alt="Teammitglied" onerror="this.closest('.team-card__photo').classList.add('team-card__photo--empty')" />
+                <!-- Foto: assets/images/team/janis-schmidlin.jpg -->
+                <img src="assets/images/team/janis-schmidlin.jpg" alt="Janis Schmidlin" onerror="this.closest('.team-card__photo').classList.add('team-card__photo--empty')" />
               </div>
               <div class="team-card__info">
-                <p class="team-card__name">Name</p>
-                <p class="team-card__role">Funktion</p>
-              </div>
-            </article>
-
-            <article class="team-card">
-              <div class="team-card__photo">
-                <!-- Foto: assets/images/team/person3.jpg -->
-                <img src="assets/images/team/person3.jpg" alt="Teammitglied" onerror="this.closest('.team-card__photo').classList.add('team-card__photo--empty')" />
-              </div>
-              <div class="team-card__info">
-                <p class="team-card__name">Name</p>
-                <p class="team-card__role">Funktion</p>
-              </div>
-            </article>
-
-            <article class="team-card">
-              <div class="team-card__photo">
-                <!-- Foto: assets/images/team/person4.jpg -->
-                <img src="assets/images/team/person4.jpg" alt="Teammitglied" onerror="this.closest('.team-card__photo').classList.add('team-card__photo--empty')" />
-              </div>
-              <div class="team-card__info">
-                <p class="team-card__name">Name</p>
-                <p class="team-card__role">Funktion</p>
+                <p class="team-card__name">Janis Schmidlin</p>
+                <p class="team-card__role">Mitarbeiter / Allrounder</p>
               </div>
             </article>
 
@@ -294,22 +283,36 @@
             <button class="btn btn--primary" type="submit">Anfrage senden</button>
           </form>
 
-          <address class="contact__info">
-            <p class="contact__info-title">Direktkontakt</p>
-            <p><strong>Andreas Inauen</strong></p>
-            <p>Ilgenstrasse 3<br>9423 Altenrhein</p>
-            <p><a href="tel:+41787445329">078 744 53 29</a></p>
-            <p><a href="mailto:lutz.zelte@bluewin.ch">lutz.zelte@bluewin.ch</a></p>
-            <p class="contact__availability">Erreichbar: 24/7 nach Vereinbarung</p>
+          <div class="contact__info-grid">
 
-            <a class="btn btn--whatsapp" href="https://wa.me/41787445329" target="_blank" rel="noopener noreferrer">
-              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-                <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/>
-                <path d="M12 0C5.373 0 0 5.373 0 12c0 2.124.554 4.122 1.524 5.855L.057 23.215a.75.75 0 0 0 .921.921l5.36-1.467A11.945 11.945 0 0 0 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22c-1.907 0-3.693-.513-5.228-1.407l-.374-.222-3.878 1.061 1.061-3.878-.222-.374A9.953 9.953 0 0 1 2 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10z"/>
-              </svg>
-              Auf WhatsApp schreiben
-            </a>
-          </address>
+            <!-- Box 1 — Verleih -->
+            <address class="contact__info contact__info--verleih">
+              <p class="contact__info-label">Verleih</p>
+              <p class="contact__info-name"><strong>Andreas Inauen</strong></p>
+              <p>Ilgenstrasse 3<br>9423 Altenrhein</p>
+              <p><a href="tel:+41787445329">078 744 53 29</a></p>
+              <p><a href="mailto:lutz.zelte@bluewin.ch">lutz.zelte@bluewin.ch</a></p>
+              <p class="contact__availability">Erreichbar: 24/7 nach Vereinbarung</p>
+
+              <a class="btn btn--whatsapp" href="https://wa.me/41787445329" target="_blank" rel="noopener noreferrer">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                  <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/>
+                  <path d="M12 0C5.373 0 0 5.373 0 12c0 2.124.554 4.122 1.524 5.855L.057 23.215a.75.75 0 0 0 .921.921l5.36-1.467A11.945 11.945 0 0 0 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22c-1.907 0-3.693-.513-5.228-1.407l-.374-.222-3.878 1.061 1.061-3.878-.222-.374A9.953 9.953 0 0 1 2 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10z"/>
+                </svg>
+                Auf WhatsApp schreiben
+              </a>
+            </address>
+
+            <!-- Box 2 — Verkauf -->
+            <address class="contact__info contact__info--verkauf">
+              <p class="contact__info-label">Verkauf</p>
+              <p class="contact__info-name"><strong>Stefan Lutz</strong></p>
+              <p>Ilgenstrasse 3<br>9423 Altenrhein</p>
+              <p class="contact__placeholder">Telefon &amp; E-Mail werden ergänzt</p>
+              <p class="contact__availability">Erreichbar: nach Vereinbarung</p>
+            </address>
+
+          </div>
         </div>
       </div>
     </section>
