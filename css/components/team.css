@@ -51,9 +51,9 @@
 .team-card__photo {
   width: 100%;
   aspect-ratio: 1 / 1;
-  border-radius: var(--radius-lg);
+  border-radius: 50%;
   overflow: hidden;
-  background-color: var(--color-gray-light);
+  background-color: transparent;
   transition: transform var(--transition);
 }
 
@@ -114,6 +114,6 @@
   }
 
   .team-card__photo {
-    border-radius: var(--radius-lg);
+    border-radius: 50%;
   }
 }
