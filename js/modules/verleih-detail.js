@@ -132,6 +132,7 @@ export function openMietzeltDetail(p) {
   /* --- Bild wechseln (Thumbnail, Tastatur, Swipe) --- */
   const mainImg = dlg.querySelector('.projekt-detail__main-img');
   const thumbs  = dlg.querySelectorAll('.projekt-detail__thumb');
+  let aktiv = 0;   /* Index des aktuell sichtbaren Bildes */
 
   function wechsleBild(idx) {
     if (!bilder.length) return;
@@ -147,12 +148,13 @@ export function openMietzeltDetail(p) {
   /* Thumbnail-Klick */
   thumbs.forEach(btn => btn.addEventListener('click', () => wechsleBild(parseInt(btn.dataset.idx))));
 
-  /* Pfeiltasten (PC) */
-  function onKey(e) {
-    if (e.key === 'ArrowRight') wechsleBild(aktiv + 1);
-    if (e.key === 'ArrowLeft')  wechsleBild(aktiv - 1);
-  }
-  document.addEventListener('keydown', onKey);
+  /* Pfeiltasten (PC) — auf window, greift unabhängig von Fokus */
+  const onKey = e => {
+    if (!dlg.open) return;
+    if (e.key === 'ArrowRight') { e.preventDefault(); wechsleBild(aktiv + 1); }
+    if (e.key === 'ArrowLeft')  { e.preventDefault(); wechsleBild(aktiv - 1); }
+  };
+  window.addEventListener('keydown', onKey);
 
   /* Swipe (Mobile) */
   const mainEl = dlg.querySelector('.projekt-detail__main');
@@ -166,8 +168,9 @@ export function openMietzeltDetail(p) {
   /* Schliessen: X-Button, Backdrop-Klick, Escape */
   dlg.querySelector('.projekt-detail__close').addEventListener('click', () => dlg.close());
   dlg.addEventListener('click', e => { if (e.target === dlg) dlg.close(); });
-  dlg.addEventListener('close', () => { document.removeEventListener('keydown', onKey); dlg.remove(); });
+  dlg.addEventListener('close', () => { window.removeEventListener('keydown', onKey); dlg.remove(); });
 
   document.body.appendChild(dlg);
   dlg.showModal();
+  dlg.focus();  /* Fokus auf Dialog setzen damit Pfeiltasten sofort greifen */
 }
