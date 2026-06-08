@@ -129,21 +129,44 @@ export function openMietzeltDetail(p) {
       </a>
     </div>`;
 
-  /* Thumbnail-Klick → Hauptbild wechseln */
+  /* --- Bild wechseln (Thumbnail, Tastatur, Swipe) --- */
   const mainImg = dlg.querySelector('.projekt-detail__main-img');
-  dlg.querySelectorAll('.projekt-detail__thumb').forEach(btn => {
-    btn.addEventListener('click', () => {
-      const src = sanityImageUrl(bilder[parseInt(btn.dataset.idx)], 1200);
-      if (mainImg && src) mainImg.src = src;
-      dlg.querySelectorAll('.projekt-detail__thumb').forEach(b => b.classList.remove('is-active'));
-      btn.classList.add('is-active');
-    });
-  });
+  const thumbs  = dlg.querySelectorAll('.projekt-detail__thumb');
+
+  function wechsleBild(idx) {
+    if (!bilder.length) return;
+    aktiv = (idx + bilder.length) % bilder.length;   /* Wrap-around */
+    const src = sanityImageUrl(bilder[aktiv], 1200);
+    if (mainImg && src) mainImg.src = src;
+    thumbs.forEach(b => b.classList.toggle('is-active', parseInt(b.dataset.idx) === aktiv));
+    /* Aktives Thumb in Sicht scrollen */
+    const aktThumb = dlg.querySelector(`.projekt-detail__thumb[data-idx="${aktiv}"]`);
+    if (aktThumb) aktThumb.scrollIntoView({ inline: 'nearest', block: 'nearest' });
+  }
+
+  /* Thumbnail-Klick */
+  thumbs.forEach(btn => btn.addEventListener('click', () => wechsleBild(parseInt(btn.dataset.idx))));
+
+  /* Pfeiltasten (PC) */
+  function onKey(e) {
+    if (e.key === 'ArrowRight') wechsleBild(aktiv + 1);
+    if (e.key === 'ArrowLeft')  wechsleBild(aktiv - 1);
+  }
+  document.addEventListener('keydown', onKey);
+
+  /* Swipe (Mobile) */
+  const mainEl = dlg.querySelector('.projekt-detail__main');
+  let touchX = 0;
+  mainEl?.addEventListener('touchstart', e => { touchX = e.touches[0].clientX; }, { passive: true });
+  mainEl?.addEventListener('touchend',   e => {
+    const diff = touchX - e.changedTouches[0].clientX;
+    if (Math.abs(diff) > 50) wechsleBild(aktiv + (diff > 0 ? 1 : -1));
+  }, { passive: true });
 
   /* Schliessen: X-Button, Backdrop-Klick, Escape */
   dlg.querySelector('.projekt-detail__close').addEventListener('click', () => dlg.close());
   dlg.addEventListener('click', e => { if (e.target === dlg) dlg.close(); });
-  dlg.addEventListener('close', () => dlg.remove());
+  dlg.addEventListener('close', () => { document.removeEventListener('keydown', onKey); dlg.remove(); });
 
   document.body.appendChild(dlg);
   dlg.showModal();
