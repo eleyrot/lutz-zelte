@@ -1,0 +1,177 @@
+/* ==========================================================================
+   legal.css — Lutz Zelte GmbH
+   Zweck: Styles für impressum.html und datenschutz.html.
+   ========================================================================== */
+
+/* --------------------------------------------------------------------------
+   1. Hero (dunkler Seiten-Header)
+   -------------------------------------------------------------------------- */
+.legal-hero {
+  padding: var(--space-16) 0 var(--space-12);
+  background-color: var(--color-dark);
+  color: var(--color-white);
+}
+
+.legal-hero__title {
+  font-family: var(--font-heading);
+  font-size: clamp(2rem, 5vw, 3.5rem);
+  font-weight: 900;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  line-height: 1.1;
+  margin: 0 0 var(--space-2);
+}
+
+.legal-hero__subtitle {
+  color: rgba(255, 255, 255, 0.65);
+  font-size: var(--text-sm);
+  margin: 0;
+}
+
+/* --------------------------------------------------------------------------
+   2. Inhalt-Container
+   -------------------------------------------------------------------------- */
+.legal {
+  max-width: 72ch;
+}
+
+.legal h2 {
+  font-family: var(--font-heading);
+  font-size: var(--text-xl);
+  font-weight: 700;
+  margin: var(--space-8) 0 var(--space-2);
+  color: var(--color-dark);
+}
+
+.legal h2:first-child {
+  margin-top: 0;
+}
+
+.legal h3 {
+  font-family: var(--font-heading);
+  font-size: var(--text-base);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin: var(--space-6) 0 var(--space-2);
+  color: var(--color-dark);
+}
+
+.legal p,
+.legal address {
+  font-size: var(--text-base);
+  line-height: 1.75;
+  color: var(--color-gray);
+  margin: 0 0 var(--space-3);
+}
+
+.legal ul {
+  margin: 0 0 var(--space-3) var(--space-4);
+  padding: 0;
+  list-style: disc;
+}
+
+.legal ul li {
+  font-size: var(--text-base);
+  line-height: 1.75;
+  color: var(--color-gray);
+  margin-bottom: var(--space-1);
+}
+
+.legal a {
+  color: var(--color-dark);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.legal a:hover {
+  color: var(--color-primary);
+}
+
+/* --------------------------------------------------------------------------
+   3. Tabelle (Impressum)
+   -------------------------------------------------------------------------- */
+.legal__tabelle {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: var(--space-6);
+  font-size: var(--text-base);
+}
+
+.legal__tabelle th,
+.legal__tabelle td {
+  padding: var(--space-2) var(--space-3);
+  text-align: left;
+  vertical-align: top;
+  border-bottom: 1px solid var(--color-gray-light);
+  line-height: 1.6;
+}
+
+.legal__tabelle th {
+  width: 40%;
+  font-weight: 600;
+  color: var(--color-dark);
+  white-space: nowrap;
+}
+
+.legal__tabelle td {
+  color: var(--color-gray);
+}
+
+.legal__tabelle td a {
+  color: var(--color-dark);
+}
+
+/* --------------------------------------------------------------------------
+   4. Adresse (Datenschutz)
+   -------------------------------------------------------------------------- */
+.legal__adresse {
+  font-style: normal;
+  background: var(--color-gray-light);
+  border-left: 3px solid var(--color-primary);
+  padding: var(--space-3) var(--space-4);
+  border-radius: var(--radius-md);
+  margin-bottom: var(--space-4) !important;
+}
+
+/* --------------------------------------------------------------------------
+   5. Stand-Datum
+   -------------------------------------------------------------------------- */
+.legal__stand {
+  font-size: var(--text-sm) !important;
+  color: rgba(0, 0, 0, 0.4) !important;
+  margin-top: var(--space-8) !important;
+  border-top: 1px solid var(--color-gray-light);
+  padding-top: var(--space-4);
+}
+
+/* --------------------------------------------------------------------------
+   6. Responsive — Tabelle auf Mobile
+   -------------------------------------------------------------------------- */
+@media (max-width: 540px) {
+  .legal__tabelle th {
+    width: 100%;
+    white-space: normal;
+  }
+
+  .legal__tabelle th,
+  .legal__tabelle td {
+    display: block;
+    padding: var(--space-1) 0;
+    border-bottom: none;
+  }
+
+  .legal__tabelle tr {
+    display: block;
+    border-bottom: 1px solid var(--color-gray-light);
+    padding: var(--space-2) 0;
+  }
+
+  .legal__tabelle th {
+    font-size: var(--text-sm);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--color-gray);
+    font-weight: 600;
+  }
+}
