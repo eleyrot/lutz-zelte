@@ -1,0 +1,147 @@
+/* ==========================================================================
+   mietzelt-detail.css — Lutz Zelte GmbH
+   Zweck: Styles für den Mietzelt-Detail-Dialog auf verleih.html.
+   Basis-Dialog-Styles (.projekt-detail) kommen aus gallery.css.
+   ========================================================================== */
+
+/* --------------------------------------------------------------------------
+   1. Karte — klickbar machen
+   -------------------------------------------------------------------------- */
+.produkt-karte--verleih {
+  cursor: pointer;
+}
+
+/* --------------------------------------------------------------------------
+   2. Spezifikations-Liste im Dialog
+   -------------------------------------------------------------------------- */
+.mietzelt-specs__wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-2);
+  width: 100%;
+  max-width: 560px;
+}
+
+.mietzelt-specs {
+  list-style: none;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px var(--space-4);
+  background: rgba(255, 255, 255, 0.08);
+  border-radius: var(--radius-md);
+  padding: var(--space-3);
+  width: 100%;
+}
+
+.mietzelt-specs li {
+  font-size: var(--text-sm);
+  color: #fff;
+  font-weight: 500;
+}
+
+.mietzelt-specs__label {
+  display: block;
+  font-size: 0.65rem;
+  text-transform: uppercase;
+  letter-spacing: 0.07em;
+  opacity: 0.55;
+  margin-bottom: 2px;
+}
+
+.mietzelt-specs__farben {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  padding: var(--space-1) 0;
+}
+
+.mietzelt-specs__beschreibung {
+  font-size: var(--text-sm);
+  color: rgba(255, 255, 255, 0.75);
+  line-height: 1.6;
+  text-align: center;
+  max-width: 480px;
+}
+
+.mietzelt-specs__liste li {
+  color: rgba(255, 255, 255, 0.8);
+}
+
+.mietzelt-specs__liste li::before {
+  color: var(--color-primary, #f5c800);
+}
+
+.mietzelt-specs__zubehoer {
+  width: 100%;
+  max-width: 400px;
+}
+
+.mietzelt-specs__zubehoer .produkt__zubehoer-titel {
+  color: rgba(255, 255, 255, 0.55);
+}
+
+.mietzelt-specs__zubehoer .produkt__zubehoer-name {
+  color: rgba(255, 255, 255, 0.8);
+}
+
+.mietzelt-specs__zubehoer .produkt__zubehoer-preis {
+  color: #fff;
+}
+
+/* --------------------------------------------------------------------------
+   3. Preis im Dialog-Header
+   -------------------------------------------------------------------------- */
+.mietzelt-detail__preis {
+  font-size: 1.3rem;
+  font-weight: 800;
+  color: #fff;
+  line-height: 1;
+}
+
+.mietzelt-detail__preis small {
+  font-size: 0.85rem;
+  font-weight: 400;
+  opacity: 0.75;
+}
+
+/* --------------------------------------------------------------------------
+   4. Kein-Bild-Platzhalter
+   -------------------------------------------------------------------------- */
+.mietzelt-detail__no-img {
+  font-size: 4rem;
+  color: rgba(255, 255, 255, 0.3);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 120px;
+}
+
+/* --------------------------------------------------------------------------
+   5. WhatsApp-Button im Dialog
+   -------------------------------------------------------------------------- */
+.mietzelt-detail__wa-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: #25D366;
+  color: #fff;
+  padding: 0.75rem 1.75rem;
+  border-radius: var(--radius-md);
+  text-decoration: none;
+  font-weight: 700;
+  font-size: var(--text-sm);
+  margin-top: var(--space-3);
+  transition: background 0.2s ease, transform 0.2s ease;
+  flex-shrink: 0;
+}
+
+.mietzelt-detail__wa-btn:hover {
+  background: #1da851;
+  transform: translateY(-1px);
+}
+
+.mietzelt-detail__wa-btn svg {
+  fill: #fff;
+  flex-shrink: 0;
+}

@@ -3,8 +3,11 @@
    Zweck: Produkt-Listings aus Sanity CMS laden und rendern.
    Modi:
      - Startseite (index.html): bis zu 3 Highlight-Zelte als Teaser
-     - Produkte-Seite (produkte.html): alle Zelte mit Filter-Tabs
+     - Verkauf-Seite (verkauf.html): alle Verkaufs-Zelte mit Filter-Tabs
+     - Verleih-Seite (verleih.html): Mietzelte mit Detail-Dialog
    ========================================================================== */
+
+import { openMietzeltDetail } from './verleih-detail.js';
 
 const PROJECT_ID = '5ndwm7ob';
 const DATASET    = 'production';
@@ -12,9 +15,9 @@ const API_URL    = `https://${PROJECT_ID}.apicdn.sanity.io/v2021-10-21/data/quer
 
 const QUERY = encodeURIComponent('*[_type == "zelt"] | order(reihenfolge asc)');
 
-/* --------------------------------------------------------------------------
+/* ---
    Sanity Bild-URL aus Asset-Referenz bauen
-   -------------------------------------------------------------------------- */
+   --- */
 function sanityImageUrl(asset, width = 800) {
   if (!asset?.asset?._ref) return null;
   const ref   = asset.asset._ref;
@@ -24,9 +27,9 @@ function sanityImageUrl(asset, width = 800) {
   return `https://cdn.sanity.io/images/${PROJECT_ID}/${DATASET}/${id}.${ext}?w=${width}&auto=format`;
 }
 
-/* --------------------------------------------------------------------------
+/* ---
    Hilfsfunktionen
-   -------------------------------------------------------------------------- */
+   --- */
 function formatPreis(preis) {
   return 'CHF ' + Math.round(preis).toString().replace(/\B(?=(\d{3})+(?!\d))/g, '\'') + '.–';
 }
@@ -40,9 +43,9 @@ const FARB_LABELS = {
   schwarz: { label: 'Schwarz', hex: '#1f2937' },
 };
 
-/* --------------------------------------------------------------------------
+/* ---
    Produkt-Karte rendern (vollständig)
-   -------------------------------------------------------------------------- */
+   --- */
 function renderKarte(p) {
   const istVermietung = p.kategorie === 'vermietung';
 
@@ -99,16 +102,11 @@ function renderKarte(p) {
     ? `<ul class="produkt__liste">${p.ausstattung.map(a => `<li>${a}</li>`).join('')}</ul>` : '';
 
   const zubehoerHTML = p.zubehoer?.length
-    ? `<div class="produkt__zubehoer">
-        <p class="produkt__zubehoer-titel">Optionales Zubehör</p>
-        <table class="produkt__zubehoer-tabelle">
-          ${p.zubehoer.map(z => `
-          <tr>
-            <td class="produkt__zubehoer-name">${z.bezeichnung}</td>
-            <td class="produkt__zubehoer-preis">${z.preis_chf ? formatPreis(z.preis_chf) : 'auf Anfrage'}</td>
-          </tr>`).join('')}
-        </table>
-      </div>` : '';
+    ? `<div class="produkt__zubehoer"><p class="produkt__zubehoer-titel">Optionales Zubehör</p>
+        <table class="produkt__zubehoer-tabelle">${p.zubehoer.map(z =>
+          `<tr><td class="produkt__zubehoer-name">${z.bezeichnung}</td>
+          <td class="produkt__zubehoer-preis">${z.preis_chf ? formatPreis(z.preis_chf) : 'auf Anfrage'}</td></tr>`
+        ).join('')}</table></div>` : '';
 
   const serieHTML = p.serie
     ? `<span class="produkt__serie">${p.serie}</span>` : '';
@@ -136,9 +134,9 @@ function renderKarte(p) {
     </article>`;
 }
 
-/* --------------------------------------------------------------------------
+/* ---
    STARTSEITE — bis zu 3 Highlight-Zelte als Teaser
-   -------------------------------------------------------------------------- */
+   --- */
 function initTeaser(alle) {
   const el = document.getElementById('produkte-teaser');
   if (!el) return;
@@ -149,18 +147,13 @@ function initTeaser(alle) {
   if (!zelte.length) { el.hidden = true; return; }
 
   el.hidden = false;
-  el.innerHTML = `
-    <div class="produkte__grid produkte__grid--teaser">
-      ${zelte.map(renderKarte).join('')}
-    </div>
-    <div class="produkte__mehr">
-      <a class="btn btn--outline" href="verkauf.html">Alle Zelte ansehen →</a>
-    </div>`;
+  el.innerHTML = `<div class="produkte__grid produkte__grid--teaser">${zelte.map(renderKarte).join('')}</div>
+    <div class="produkte__mehr"><a class="btn btn--outline" href="verkauf.html">Alle Zelte ansehen →</a></div>`;
 }
 
-/* --------------------------------------------------------------------------
+/* ---
    VERKAUFS-SEITE — alle Verkaufs-Zelte (Vermietung ausgeschlossen)
-   -------------------------------------------------------------------------- */
+   --- */
 function initProduktSeite(alle) {
   const container = document.getElementById('produkte-alle');
   const tabsEl    = document.getElementById('produkte-tabs');
@@ -176,10 +169,7 @@ function initProduktSeite(alle) {
     { id: 'occasion', label: 'Occasion', filter: p => p.kategorie === 'occasion' },
   ];
 
-  /* Damit der Rest mit "alle" weiterarbeitet, ohne Vermietung */
   alle = verkaufsZelte;
-
-  /* Tabs rendern — nur Tabs mit Einträgen anzeigen */
   const sichtbareTabs = tabs.filter(t => alle.some(t.filter));
   tabsEl.innerHTML = sichtbareTabs.map((t, i) =>
     `<button class="filter-tab${i === 0 ? ' filter-tab--active' : ''}" data-tab="${t.id}">${t.label}</button>`
@@ -196,7 +186,6 @@ function initProduktSeite(alle) {
     container.innerHTML = `<div class="produkte__grid">${gefiltert.map(renderKarte).join('')}</div>`;
   }
 
-  /* Tab-Klick */
   tabsEl.addEventListener('click', e => {
     const btn = e.target.closest('.filter-tab');
     if (!btn) return;
@@ -205,7 +194,6 @@ function initProduktSeite(alle) {
     renderTab(btn.dataset.tab);
   });
 
-  /* URL-Hash als initialen Filter verwenden (#serie1, #occasion, etc.) */
   const hash = location.hash.replace('#', '');
   const startTab = sichtbareTabs.find(t => t.id === hash) ? hash : sichtbareTabs[0]?.id;
   if (startTab) {
@@ -218,9 +206,53 @@ function initProduktSeite(alle) {
   }
 }
 
-/* --------------------------------------------------------------------------
-   VERLEIH-SEITE — nur Mietzelte (kategorie == 'vermietung')
-   -------------------------------------------------------------------------- */
+/* ---
+   VERLEIH-KARTE — kompakte Karte mit «Details & Fotos» Button
+   --- */
+function renderVerleihKarte(p) {
+  const bildSrc = p.bilder?.length ? sanityImageUrl(p.bilder[0], 600) : null;
+  const bildHTML = bildSrc
+    ? `<img src="${bildSrc}" alt="${p.name}" class="produkt__bild" loading="lazy" />`
+    : `<div class="produkt__bild-placeholder" aria-hidden="true">⛺</div>`;
+
+  const verfuegbarBadge = p.verfuegbar
+    ? `<span class="produkt__badge produkt__badge--ok">Verfügbar</span>`
+    : `<span class="produkt__badge produkt__badge--nein">Vergeben</span>`;
+
+  let groesse = p.groesse_m || '';
+  if (!groesse && p.groesse_b_m && p.groesse_l_m) groesse = `${p.groesse_b_m} × ${p.groesse_l_m} m`;
+  const groesseHTML = groesse ? `<span class="produkt__meta-item">📐 ${groesse}</span>` : '';
+  const gewichtHTML = p.gewicht_kg ? `<span class="produkt__meta-item">⚖️ ${p.gewicht_kg} kg</span>` : '';
+  const kapHTML = p.kapazitaet_personen ? `<span class="produkt__meta-item">👥 bis ${p.kapazitaet_personen} Personen</span>` : '';
+
+  const preis = p.preis_pro_tag
+    ? `<span class="produkt__preis">${formatPreis(p.preis_pro_tag)} <small>/ Tag</small></span>` : '';
+
+  const anzahl = p.bilder?.length || 0;
+  const fotoBadge = anzahl > 1
+    ? `<span class="gallery__count-badge">📷 ${anzahl} Fotos</span>` : '';
+
+  return `
+    <article class="produkt-karte produkt-karte--verleih" data-id="${p._id}">
+      <div class="produkt__bild-wrapper">
+        ${bildHTML}
+        <div class="produkt__badges">${verfuegbarBadge}</div>
+        ${fotoBadge}
+      </div>
+      <div class="produkt__body">
+        <h3 class="produkt__name">${p.name}</h3>
+        <div class="produkt__meta">${groesseHTML}${gewichtHTML}${kapHTML}</div>
+        <div class="produkt__footer">
+          ${preis}
+          <button class="btn btn--primary produkt__btn">Details &amp; Fotos</button>
+        </div>
+      </div>
+    </article>`;
+}
+
+/* ---
+   VERLEIH-SEITE — nur Mietzelte (kategorie == 'vermietung'), mit Dialog
+   --- */
 function initVerleihSeite(alle) {
   const container = document.getElementById('mietzelte-alle');
   if (!container) return;
@@ -232,12 +264,22 @@ function initVerleihSeite(alle) {
     return;
   }
 
-  container.innerHTML = `<div class="produkte__grid">${mietzelte.map(renderKarte).join('')}</div>`;
+  /* Map für schnellen Lookup beim Klick */
+  const map = new Map(mietzelte.map(p => [p._id, p]));
+  container.innerHTML = `<div class="produkte__grid">${mietzelte.map(renderVerleihKarte).join('')}</div>`;
+
+  /* Delegierter Klick-Handler — öffnet Detail-Dialog */
+  container.addEventListener('click', e => {
+    const karte = e.target.closest('[data-id]');
+    if (!karte) return;
+    const produkt = map.get(karte.dataset.id);
+    if (produkt) openMietzeltDetail(produkt);
+  });
 }
 
-/* --------------------------------------------------------------------------
+/* ---
    Hauptfunktion — lädt Daten, entscheidet Modus
-   -------------------------------------------------------------------------- */
+   --- */
 export async function initProducts() {
   let alle;
   try {
