@@ -1,8 +1,9 @@
 /* ==========================================================================
    gallery.js — Lutz Zelte GmbH
    Zweck: Projekt-Galerie aus Sanity laden.
-   Grid: 1 Karte pro Projekt (Cover-Bild + Name + Kategorie).
-   Klick: öffnet Detail-Overlay mit grossem Hauptbild + Thumbnail-Strip.
+   Modi:
+     - Startseite (#gallery-grid): max. 3 Projekte als Teaser + «Alle»-Button
+     - Galerie-Seite (#gallery-grid-alle): alle Projekte
    ========================================================================== */
 
 const PROJECT_ID = '5ndwm7ob';
@@ -43,7 +44,7 @@ function formatDatum(iso) {
 }
 
 /* --------------------------------------------------------------------------
-   Detail-Overlay — natives <dialog>
+   Detail-Overlay — natives <dialog> mit Pfeiltasten + Swipe
    -------------------------------------------------------------------------- */
 function createDetail() {
   const dialog = document.createElement('dialog');
@@ -71,9 +72,40 @@ function createDetail() {
   const katEl    = dialog.querySelector('.projekt-detail__kategorie');
   const mainImg  = dialog.querySelector('.projekt-detail__main-img');
   const thumbsEl = dialog.querySelector('.projekt-detail__thumbnails');
+  const mainEl   = dialog.querySelector('.projekt-detail__main');
+
+  let bilder = [];
+  let aktiv  = 0;
+
+  function setMain(idx) {
+    aktiv = (idx + bilder.length) % bilder.length;
+    mainImg.src = sanityImageUrl(bilder[aktiv], 1600);
+    mainImg.alt = bilder[aktiv].alt || '';
+    thumbsEl.querySelectorAll('.projekt-detail__thumb').forEach((t, i) => {
+      t.classList.toggle('is-active', i === aktiv);
+    });
+    const aktThumb = thumbsEl.querySelector(`[data-idx="${aktiv}"]`);
+    if (aktThumb) aktThumb.scrollIntoView({ inline: 'nearest', block: 'nearest' });
+  }
+
+  /* Pfeiltasten (PC) — auf window, greift unabhängig vom Fokus */
+  window.addEventListener('keydown', e => {
+    if (!dialog.open) return;
+    if (e.key === 'ArrowRight') { e.preventDefault(); setMain(aktiv + 1); }
+    if (e.key === 'ArrowLeft')  { e.preventDefault(); setMain(aktiv - 1); }
+  });
+
+  /* Swipe (Mobile) */
+  let touchX = 0;
+  mainEl.addEventListener('touchstart', e => { touchX = e.touches[0].clientX; }, { passive: true });
+  mainEl.addEventListener('touchend', e => {
+    const diff = touchX - e.changedTouches[0].clientX;
+    if (Math.abs(diff) > 50) setMain(aktiv + (diff > 0 ? 1 : -1));
+  }, { passive: true });
 
   function open(p) {
-    const bilder = (p.bilder || []).filter(b => sanityImageUrl(b));
+    bilder = (p.bilder || []).filter(b => sanityImageUrl(b));
+    aktiv  = 0;
     if (!bilder.length) return;
 
     titleEl.textContent = p.name;
@@ -84,20 +116,11 @@ function createDetail() {
     katEl.textContent = katLabel;
     katEl.hidden      = !katLabel;
 
-    const setMain = (idx) => {
-      const b = bilder[idx];
-      mainImg.src = sanityImageUrl(b, 1600);
-      mainImg.alt = b.alt || p.name;
-      thumbsEl.querySelectorAll('.projekt-detail__thumb').forEach((t, i) => {
-        t.classList.toggle('is-active', i === idx);
-      });
-    };
-
     thumbsEl.innerHTML = bilder.map((b, i) => `
-      <button class="projekt-detail__thumb" type="button" role="listitem" data-idx="${i}" aria-label="Bild ${i + 1}">
+      <button class="projekt-detail__thumb" type="button" role="listitem"
+              data-idx="${i}" aria-label="Bild ${i + 1}">
         <img src="${sanityImageUrl(b, 200)}" alt="${b.alt || p.name}" loading="lazy" />
-      </button>
-    `).join('');
+      </button>`).join('');
 
     thumbsEl.querySelectorAll('.projekt-detail__thumb').forEach(btn => {
       btn.addEventListener('click', () => setMain(parseInt(btn.dataset.idx, 10)));
@@ -131,8 +154,7 @@ function renderGrid(projekte, container, detail) {
     const katLabel = KAT_LABELS[p.kategorie] || '';
     const anzahl   = bilder.length;
     const countBadge = anzahl > 1
-      ? `<span class="gallery__count-badge">📷 ${anzahl} Fotos</span>`
-      : '';
+      ? `<span class="gallery__count-badge">📷 ${anzahl} Fotos</span>` : '';
     return `
       <div class="gallery__item" role="listitem" data-idx="${i}" tabindex="0"
            aria-label="${p.name}${katLabel ? ' — ' + katLabel : ''}">
@@ -159,8 +181,9 @@ function renderGrid(projekte, container, detail) {
    Hauptfunktion
    -------------------------------------------------------------------------- */
 export async function initGallery() {
-  const container = document.getElementById('gallery-grid');
-  if (!container) return;
+  const teaserEl = document.getElementById('gallery-grid');
+  const alleEl   = document.getElementById('gallery-grid-alle');
+  if (!teaserEl && !alleEl) return;
 
   const detail = createDetail();
 
@@ -172,9 +195,25 @@ export async function initGallery() {
     projekte   = json.result ?? [];
   } catch (err) {
     console.warn('Galerie konnte nicht geladen werden:', err);
-    container.innerHTML = '<p class="gallery__leer">Galerie momentan nicht verfügbar.</p>';
+    const el = teaserEl || alleEl;
+    el.innerHTML = '<p class="gallery__leer">Galerie momentan nicht verfügbar.</p>';
     return;
   }
 
-  renderGrid(projekte, container, detail);
+  if (teaserEl) {
+    /* Teaser: max. 3 sichtbare Projekte auf der Startseite */
+    const sichtbare = projekte.filter(p => (p.bilder || []).some(b => sanityImageUrl(b)));
+    renderGrid(sichtbare.slice(0, 3), teaserEl, detail);
+    if (sichtbare.length > 3) {
+      const mehr = document.createElement('div');
+      mehr.className = 'galerie__mehr';
+      mehr.innerHTML = `<a class="btn btn--outline" href="galerie.html">Alle Projekte ansehen →</a>`;
+      teaserEl.insertAdjacentElement('afterend', mehr);
+    }
+  }
+
+  if (alleEl) {
+    /* Vollansicht: alle Projekte auf galerie.html */
+    renderGrid(projekte, alleEl, detail);
+  }
 }
