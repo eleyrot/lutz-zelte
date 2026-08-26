@@ -6,3 +6,12 @@ studio/deploy.ps1
 # Allgemein
 .DS_Store
 Thumbs.db
+
+# Root: einmaliges Tooling (PDF-Konvertierung), kein Teil der Website
+/node_modules/
+/package.json
+/package-lock.json
+
+# Geschäftsunterlagen, keine Website-Inhalte
+Offerte-Lutz-Zelte-2026.docx
+Offerte-Lutz-Zelte-2026.pdf
